@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/GameManager/GameManager.gdns" type="Script" id=1]
-[ext_resource path="res://GameContent/Gameplay/GameManager/Node.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://GameContent/UI/FredokaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 31
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
 
 [node name="GameManager" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreDisplay" type="Label" parent="Control"]
+margin_right = 128.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
