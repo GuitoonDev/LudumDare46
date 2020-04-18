@@ -12,6 +12,7 @@ namespace godot {
 
 	public:
 		static void _register_methods();
+		void _init();
 		void _process(float delta);
 
 #pragma region MyRegion
