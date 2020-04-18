@@ -30,7 +30,6 @@ Release
 ipch
 *sdf
 
-*.vcxproj
 *.vs
-.vs/
+.Src.vs/
 *.vcxproj
