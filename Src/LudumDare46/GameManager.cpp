@@ -4,7 +4,7 @@ using namespace godot;
 using namespace std;
 
 #pragma region Construction
-GameManager::GameManager():m_score(0), m_label(nullptr){}
+GameManager::GameManager() :m_score(0){}
 GameManager::~GameManager(){}
 #pragma endregion
 
@@ -32,17 +32,7 @@ void GameManager::_process()
 
 void GameManager::_init()
 {
-	NodePath path = get_path();
-	Godot::print(path);
-	Node* _labelNode = get_node(NodePath("Control/ScoreDisplay"));
-	if (_labelNode != nullptr) {
-
-	}
-	//Godot::print(labelNode->get_name());
-	//m_label = cast_to<Label>(labelNode);
-	//m_label->set_text(String("Pwet"));
 }
-
 #pragma endregion
 
 #pragma region Game Management
@@ -68,7 +58,6 @@ void GameManager::Pause()
 {
 	Godot::print("TODO : Pause the game");
 }
-
 void GameManager::ReloadGame()
 {
 	get_tree()->reload_current_scene();
