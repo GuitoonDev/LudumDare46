@@ -9,14 +9,19 @@ void PlayerTest::_register_methods()
 
 void PlayerTest::_init()
 {
-	Godot::print(String("Pouette"));
+	set_position(get_position() + Vector2(10.0, 0.0));
 }
 
 void PlayerTest::_process(float delta)
 {
+	Godot::print(String("Pouette"));
+	motion = Vector2(2000.0, 0.0);
+	set_position(get_position() + Vector2(1.0, 0.0));
+
+	//move_and_slide(motion);
 }
 
-PlayerTest::PlayerTest()
+PlayerTest::PlayerTest() : motion(Vector2(0,0))
 {
 }
 
