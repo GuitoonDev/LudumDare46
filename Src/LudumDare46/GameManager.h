@@ -2,61 +2,30 @@
 
 #include <core/Godot.hpp>
 #include <Node.hpp>
-#include <Control.hpp>
-#include <core/NodePath.hpp>
 #include <core/String.hpp>
-#include <InputEvent.hpp>
 #include <Input.hpp>
 #include <SceneTree.hpp>
-#include <Curve.hpp>
-#include <Label.hpp>
 #include <string>
 #include <iostream>
-#include <Timer.hpp>
-
 
 namespace godot {
-
-	enum class GameState {
-		Idle,
-		Playing,
-		Over
-	};
-
 	class GameManager : public Node {
 		GODOT_CLASS(GameManager, Node)
 	public:
 		GameManager();
 		~GameManager();
 
-		//Properties
-		static const GameManager* GetGameManager();
-
-		//Godot methods
 		static void _register_methods();
-		void _input(InputEvent* p_input);
-		void _ready();
+		void _process();
 		void _init();
 
-		//Game management method
-		void AddPoints(const int p_points);
+		void AddPoints(const int points);
+		void StartGame();
 		void Lose();
-
+		void Pause();
 	private:
 		int m_score;
-		static GameManager* m_manager;
-		GameState m_gameState;
-		Label* m_scoreText;
-		Control* m_titleScreen;
-		Control* m_defeatScreen;
-		Label* m_finalScoreText;
-		Control* m_pauseScreen;
 
-		void StartGame();
-		void SetPauseMode();
 		void ReloadGame();
-		void LeaveGame();
-		void DisplayGameOverScreen(const bool p_display);
-		void DisplayTitleScreen(const bool p_display);
 	};
 }
