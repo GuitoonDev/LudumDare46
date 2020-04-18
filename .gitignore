@@ -34,3 +34,4 @@ ipch
 .Src.vs/
 *.vcxproj
 Src/.vs
+*.dll
