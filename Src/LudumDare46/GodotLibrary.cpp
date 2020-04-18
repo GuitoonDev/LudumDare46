@@ -1,6 +1,7 @@
 #include "PlayerTest.h"
 #include "PlayerController.h"
 #include "Planet.h"
+#include "Meteorite.h"
 #include "GameManager.h"
 
 using namespace godot;
@@ -19,5 +20,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 
 	register_class<PlayerController>();
 	register_class<Planet>();
+	register_class<Meteorite>();
 	register_class<GameManager>();
 }
