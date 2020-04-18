@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "",
 "class": "GameManager",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
+}, {
+"base": "",
+"class": "Planet",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/Planet/Planet.gdns"
+}, {
+"base": "",
+"class": "PlayerController",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/PlayerController/PlayerController.gdns"
 } ]
 _global_script_class_icons={
-"GameManager": ""
+"GameManager": "",
+"Planet": "",
+"PlayerController": ""
 }
 
 [application]
