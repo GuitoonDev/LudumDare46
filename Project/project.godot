@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "GameManager",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
+} ]
 _global_script_class_icons={
-
+"GameManager": ""
 }
 
 [application]
