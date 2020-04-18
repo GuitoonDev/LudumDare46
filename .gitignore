@@ -33,3 +33,4 @@ ipch
 *.vs
 .Src.vs/
 *.vcxproj
+Src/.vs
