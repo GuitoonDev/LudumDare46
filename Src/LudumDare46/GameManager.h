@@ -2,14 +2,11 @@
 
 #include <core/Godot.hpp>
 #include <Node.hpp>
-#include <core/NodePath.hpp>
 #include <core/String.hpp>
 #include <Input.hpp>
 #include <SceneTree.hpp>
 #include <string>
 #include <iostream>
-#include <Curve.hpp>
-#include <Label.hpp>
 
 namespace godot {
 	class GameManager : public Node {
@@ -28,7 +25,6 @@ namespace godot {
 		void Pause();
 	private:
 		int m_score;
-		Label* m_label;
 
 		void ReloadGame();
 	};
