@@ -3,28 +3,29 @@
 #include <core/Godot.hpp>
 #include <Node.hpp>
 #include <core/String.hpp>
+#include <Input.hpp>
+#include <SceneTree.hpp>
+#include <string>
+#include <iostream>
 
 namespace godot {
 	class GameManager : public Node {
 		GODOT_CLASS(GameManager, Node)
 	public:
-#pragma region Construction
 		GameManager();
 		~GameManager();
-#pragma endregion
 
-#pragma region Godot Methods
 		static void _register_methods();
+		void _process();
 		void _init();
-#pragma endregion
 
-#pragma region Game Management
-		void AddPoints();
+		void AddPoints(const int points);
 		void StartGame();
 		void Lose();
 		void Pause();
-#pragma endregion
 	private:
-		float m_score;
+		int m_score;
+
+		void ReloadGame();
 	};
 }
