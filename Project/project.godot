@@ -9,11 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "",
 "class": "GameManager",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
-<<<<<<< HEAD
 }, {
 "base": "",
 "class": "Planet",
@@ -29,11 +28,6 @@ _global_script_class_icons={
 "GameManager": "",
 "Planet": "",
 "PlayerController": ""
-=======
-} ]
-_global_script_class_icons={
-"GameManager": ""
->>>>>>> Created Game Manager source files and prototype methods
 }
 
 [application]
