@@ -12,6 +12,7 @@
 #include <Label.hpp>
 #include <string>
 #include <iostream>
+#include <Timer.hpp>
 
 
 namespace godot {
@@ -49,9 +50,10 @@ namespace godot {
 		Control* m_titleScreen;
 		Control* m_defeatScreen;
 		Label* m_finalScoreText;
+		Control* m_pauseScreen;
 
 		void StartGame();
-		void Pause();
+		void SetPauseMode();
 		void ReloadGame();
 		void LeaveGame();
 		void DisplayGameOverScreen(const bool p_display);
