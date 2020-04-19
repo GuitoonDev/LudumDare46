@@ -18,10 +18,10 @@ void PlayerController::_register_methods() {
 }
 
 void PlayerController::_init() {
-	Godot::print("Init");
 }
 
 void PlayerController::_process(float delta) {
+	//Godot::print(std::to_string(m_speed).c_str());
 }
 
 // --------------------------------

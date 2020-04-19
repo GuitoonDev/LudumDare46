@@ -11,12 +11,22 @@ Planet::~Planet() {
 // --------------------------------
 
 void Planet::_register_methods() {
+	register_method("_ready", &Planet::_ready);
+
 	register_property<Planet, int>("m_health", &Planet::setHealth, &Planet::getHealth, 3);
 	register_property<Planet, float>("m_radius", &Planet::setRadius, &Planet::getRadius, 5);
 }
 
 void Planet::_init() {
+}
+
+void Planet::_ready() {
 	set_scale(Vector2(m_radius, m_radius));
+
+	/*Godot::print(std::to_string(get_viewport_rect().size.x).c_str());
+	Godot::print(std::to_string(get_viewport_rect().size.y).c_str());
+
+	set_position(get_viewport_rect().size / 2);*/
 }
 
 // --------------------------------

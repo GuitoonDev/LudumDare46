@@ -2,6 +2,7 @@
 
 #include <core/Godot.hpp>
 #include <KinematicBody2D.hpp>
+#include <string>
 
 namespace godot {
 	class PlayerController : public KinematicBody2D {

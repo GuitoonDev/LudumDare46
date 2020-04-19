@@ -1,12 +1,12 @@
 #pragma once
 
 #include <core/Godot.hpp>
-#include <Node2D.hpp>
+#include <StaticBody2D.hpp>
 #include <string>
 
 namespace godot {
-	class Planet : public Node2D {
-		GODOT_CLASS(Planet, Node2D)
+	class Planet : public StaticBody2D {
+		GODOT_CLASS(Planet, StaticBody2D)
 
 		private:
 			bool m_hasExplode = false;
@@ -21,6 +21,7 @@ namespace godot {
 
 			static void _register_methods();
 			void _init();
+			void _ready();
 
 		// ---------------
 
