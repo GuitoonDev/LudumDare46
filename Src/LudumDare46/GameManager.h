@@ -2,6 +2,7 @@
 
 #include <core/Godot.hpp>
 #include <Node.hpp>
+#include <Control.hpp>
 #include <core/NodePath.hpp>
 #include <core/String.hpp>
 #include <Input.hpp>
@@ -30,7 +31,9 @@ namespace godot {
 	private:
 		int m_score;
 		Label* m_label;
+		Control* m_titleScreen;
 
 		void ReloadGame();
+		void DisplayTitleScreen(const bool display);
 	};
 }
