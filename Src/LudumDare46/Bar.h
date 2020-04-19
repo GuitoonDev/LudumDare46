@@ -2,6 +2,7 @@
 
 #include <core/Godot.hpp>
 #include <Area2D.hpp>
+#include "GameManager.h"
 
 namespace godot {
 	class Bar : public Area2D {

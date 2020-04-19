@@ -10,6 +10,8 @@ Bar::~Bar() {}
 void Bar::_register_methods() {
 	register_method("_ready", &Bar::_ready);
 
+	register_method("sendBack", &Bar::sendBack);
+
 	register_property<Bar, float>("Width", &Bar::setWidth, &Bar::getWidth, 0);
 }
 
@@ -41,6 +43,8 @@ void Bar::setWidth(float p_width) {
 
 // --------------------------------
 
-void godot::Bar::sendBack(Node * body) {
+void Bar::sendBack(Node * body) {
+	GameManager::GetGameManager()->AddPoints(50);
+
 	Godot::print("Send Back!");
 }

@@ -21,7 +21,7 @@ GameManager::~GameManager() {}
 #pragma endregion
 
 #pragma region Properties
-const GameManager* GameManager::GetGameManager()
+GameManager* GameManager::GetGameManager()
 {
 	return m_manager;
 }
