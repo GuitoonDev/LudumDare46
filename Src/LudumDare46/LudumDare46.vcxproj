@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bar.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GodotLibrary.cpp" />
     <ClCompile Include="Meteorite.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="PlayerController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bar.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Meteorite.h" />
     <ClInclude Include="MeteoriteSpawner.h" />

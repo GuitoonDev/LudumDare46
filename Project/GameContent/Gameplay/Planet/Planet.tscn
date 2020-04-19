@@ -10,9 +10,7 @@ radius = 30.0
 current = true
 
 [node name="Planet (StaticBody2D)" type="StaticBody2D" parent="."]
-position = Vector2( 1271.35, 707.426 )
 script = ExtResource( 1 )
-m_radius = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet (StaticBody2D)"]
 shape = SubResource( 1 )

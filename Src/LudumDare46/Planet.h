@@ -2,7 +2,6 @@
 
 #include <core/Godot.hpp>
 #include <StaticBody2D.hpp>
-#include <string>
 
 namespace godot {
 	class Planet : public StaticBody2D {

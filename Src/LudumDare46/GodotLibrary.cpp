@@ -3,6 +3,7 @@
 #include "Meteorite.h"
 #include "MeteoriteSpawner.h"
 #include "GameManager.h"
+#include "Bar.h"
 
 using namespace godot;
 
@@ -22,4 +23,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	register_class<Meteorite>();
 	register_class<MeteoriteSpawner>();
 	register_class<GameManager>();
+	register_class<Bar>();
 }
