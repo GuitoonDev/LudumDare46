@@ -2,6 +2,7 @@
 
 #include <core/Godot.hpp>
 #include <Area2D.hpp>
+#include <Timer.hpp>
 #include "GameManager.h"
 
 namespace godot {
@@ -12,6 +13,8 @@ namespace godot {
 			bool m_hasExplode = false;
 			int m_health;
 			float m_radius;
+
+			Timer* timer;
 
 		public:
 			Planet();
@@ -34,5 +37,6 @@ namespace godot {
 		// ---------------
 
 			void takeDamage(Node* body);
+			void onTimeOut();
 	};
 }

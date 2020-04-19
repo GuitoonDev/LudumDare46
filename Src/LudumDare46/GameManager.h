@@ -30,7 +30,7 @@ namespace godot {
 		~GameManager();
 
 		//Properties
-		static const GameManager* GetGameManager();
+		static GameManager* GetGameManager();
 
 		//Godot methods
 		static void _register_methods();

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://GameContent/Gameplay/PlayerController/PlayerController.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -11,6 +12,7 @@ current = true
 
 [node name="Planet (Area2D)" type="Area2D" parent="."]
 script = ExtResource( 1 )
+health = 3
 radius = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet (Area2D)"]
@@ -19,3 +21,11 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Planet (Area2D)"]
 scale = Vector2( 0.854877, 0.854877 )
 texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Planet (Area2D)"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="PlayerController" parent="Planet (Area2D)" instance=ExtResource( 3 )]
+position = Vector2( 0, 0 )
