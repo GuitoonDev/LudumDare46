@@ -24,24 +24,52 @@ void MeteoriteSpawner::_init()
 }
 
 void MeteoriteSpawner::_ready() {
-	Godot::print(String("MeteoriteSpawner::_ready"));
+	Godot::print("MeteoriteSpawner::_ready");
 
 	ResourceLoader *resourceLoader = ResourceLoader::get_singleton();
 	m_meteorite = resourceLoader->load("res://GameContent/Gameplay/Meteorite/Meteorite.tscn");
+
+	Node* meteoriteNode;
+
+	meteoriteNode = m_meteorite->instance();
+	get_tree()->get_root()->call_deferred("add_child", meteoriteNode);
+	meteoriteNode->connect("collide", this, "onMeteoriteCollide");
+
+	meteoriteNode = m_meteorite->instance();
+	get_tree()->get_root()->call_deferred("add_child", meteoriteNode);
+	meteoriteNode->connect("collide", this, "onMeteoriteCollide");
+	
+	meteoriteNode = m_meteorite->instance();
+	get_tree()->get_root()->call_deferred("add_child", meteoriteNode);
+	meteoriteNode->connect("collide", this, "onMeteoriteCollide");
+	
+	meteoriteNode = m_meteorite->instance();
+	get_tree()->get_root()->call_deferred("add_child", meteoriteNode);
+	meteoriteNode->connect("collide", this, "onMeteoriteCollide");
 }
 
 void MeteoriteSpawner::_process(float delta)
 {
-	m_spawnTime += delta;
+	//m_spawnTime += delta;
 
-	if (m_spawnTime > 1.0)
-	{
-		if (m_meteorite.is_valid())
-		{
-			Node* instanceNode = m_meteorite->instance();
-			get_tree()->get_root()->add_child(instanceNode, true);
-		}
+	//if (m_spawnTime > 1.0)
+	//{
+	//	if (m_meteorite.is_valid())
+	//	{
+	//		Godot::print("Instanciate Meteorite");
+	//		
+	//		//Godot::print("Meteorite name before add_child :" + instanceNode->get_name());
+	//		
+	//		get_tree()->get_root()->call_deferred("add_child", m_meteoriteNode);
 
-		m_spawnTime = 0;
-	}
+	//		//Godot::print("Meteorite name after add_child :" + instanceNode->get_name());
+	//	}
+
+	//	m_spawnTime = 0;
+	//}
+}
+
+void MeteoriteSpawner::onMeteoriteCollide(Node* p_meteorite)
+{
+	Godot::print("onMeteoriteCollide : " + p_meteorite->get_name());
 }

@@ -2,6 +2,8 @@
 
 using namespace godot;
 
+int Meteorite::s_instanceCount = 0;
+
 Meteorite::Meteorite()
 {
 }
@@ -17,17 +19,21 @@ void Meteorite::_register_methods()
 	register_method((char*)"_physics_process", &Meteorite::_physics_process);
 
 	register_property<Meteorite, float>("speed", &Meteorite::m_speed, 0);
+
+	register_signal<Meteorite>("collide", "node", GODOT_VARIANT_TYPE_OBJECT);
 }
 
 void Meteorite::_init()
 {
 	Godot::print(String("Meteorite::_init"));
+
+	//s_instanceCount++;
 }
 
 void Meteorite::_ready() {
 	Godot::print(String("Meteorite::_ready"));
 
-	srand(time(NULL));
+	//srand(time(NULL));
 
 	//float x_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
 	//float y_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
@@ -48,6 +54,7 @@ void Meteorite::_physics_process(float delta)
 
 void Meteorite::collide()
 {
+	emit_signal("collide", this);
 	queue_free();
 }
 

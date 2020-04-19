@@ -28,6 +28,8 @@ public:
 	void _ready();
 	void _init();
 	void _process(float delta);
+
+	void onMeteoriteCollide(Node* p_meteorite);
 };
 
 }

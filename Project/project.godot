@@ -33,5 +33,5 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 46"
-run/main_scene="res://GameContent/Gameplay/MeteoriteSpawner/MeteoriteSpawner.tscn"
+run/main_scene="res://GameContent/Gameplay/TestScene/GameScene.tscn"
 config/icon="res://icon.png"

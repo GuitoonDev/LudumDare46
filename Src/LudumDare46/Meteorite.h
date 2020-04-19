@@ -14,6 +14,8 @@ class Meteorite : public KinematicBody2D
 
 private:
 
+	static int s_instanceCount;
+
 	float m_speed;
 
 	Vector2 m_velocity;
