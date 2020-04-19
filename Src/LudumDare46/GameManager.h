@@ -5,17 +5,18 @@
 #include <Control.hpp>
 #include <core/NodePath.hpp>
 #include <core/String.hpp>
+#include <InputEvent.hpp>
 #include <Input.hpp>
 #include <SceneTree.hpp>
-#include <string>
-#include <iostream>
 #include <Curve.hpp>
 #include <Label.hpp>
+#include <string>
+#include <iostream>
 
 
 namespace godot {
 
-	enum GameState {
+	enum class GameState {
 		Idle,
 		Playing,
 		Over
@@ -27,23 +28,26 @@ namespace godot {
 		GameManager();
 		~GameManager();
 
+		//Godot methods
 		static void _register_methods();
-		void _process();
+		void _input(InputEvent* p_input);
 		void _ready();
 		void _init();
 
+		//Game management method
 		void AddPoints(const int p_points);
-		void StartGame();
 		void Lose();
-		void Pause();
+
 	private:
 		int m_score;
 		GameState m_gameState;
 		Label* m_scoreText;
 		Control* m_titleScreen;
 		Control* m_defeatScreen;
-		//Label* m_finalScoreText;
+		Label* m_finalScoreText;
 
+		void StartGame();
+		void Pause();
 		void ReloadGame();
 		void LeaveGame();
 		void DisplayGameOverScreen(const bool p_display);
