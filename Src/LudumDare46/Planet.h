@@ -1,12 +1,12 @@
 #pragma once
 
 #include <core/Godot.hpp>
-#include <Node2D.hpp>
-#include <string>
+#include <Area2D.hpp>
+#include "GameManager.h"
 
 namespace godot {
-	class Planet : public Node2D {
-		GODOT_CLASS(Planet, Node2D)
+	class Planet : public Area2D {
+		GODOT_CLASS(Planet, Area2D)
 
 		private:
 			bool m_hasExplode = false;
@@ -21,6 +21,7 @@ namespace godot {
 
 			static void _register_methods();
 			void _init();
+			void _ready();
 
 		// ---------------
 
@@ -32,6 +33,6 @@ namespace godot {
 
 		// ---------------
 
-			void takeDamage();
+			void takeDamage(Node* body);
 	};
 }
