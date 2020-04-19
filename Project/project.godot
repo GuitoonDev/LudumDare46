@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
+"base": "",
 "class": "Bar",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Bar/Bar.gdns"
@@ -19,12 +19,12 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
 }, {
-"base": "StaticBody2D",
+"base": "",
 "class": "Planet",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Planet/Planet.gdns"
 }, {
-"base": "Node2D",
+"base": "",
 "class": "PlayerController",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/PlayerController/PlayerController.gdns"
@@ -39,9 +39,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 46"
-run/main_scene="res://GameContent/Gameplay/MeteoriteSpawner/MeteoriteSpawner.tscn"
+run/main_scene="res://GameContent/Levels/SCN_MainLevel.tscn"
 config/icon="res://icon.png"
 
 [display]
 
+window/size/width=700
+window/size/height=700
 window/size/resizable=false
