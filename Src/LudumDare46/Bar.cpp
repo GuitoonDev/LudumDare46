@@ -18,6 +18,8 @@ void Bar::_init() {
 }
 
 void Bar::_ready() {
+	connect("body_entered", this, "sendBack");
+
 	///set_scale(Vector2(m_width, get_scale().y));
 	Godot::print("Bar Ready");
 }
@@ -35,4 +37,10 @@ void Bar::setWidth(float p_width) {
 	else {
 		m_width = 0;
 	}
+}
+
+// --------------------------------
+
+void godot::Bar::sendBack(Node * body) {
+	Godot::print("Send Back!");
 }

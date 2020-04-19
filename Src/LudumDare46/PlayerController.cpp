@@ -19,8 +19,10 @@ void PlayerController::_init() {
 }
 
 void PlayerController::_ready() {
-	m_rotation = get_rotation();
 	m_input = Input::get_singleton();
+	m_rotation = get_rotation();
+	
+	((Node2D*)get_child(0))->set_position(Vector2(0, -m_offsetRadius));
 }
 
 void PlayerController::_process(float delta) {

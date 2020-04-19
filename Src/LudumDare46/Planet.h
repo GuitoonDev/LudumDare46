@@ -1,11 +1,12 @@
 #pragma once
 
 #include <core/Godot.hpp>
-#include <StaticBody2D.hpp>
+#include <Area2D.hpp>
+#include "GameManager.h"
 
 namespace godot {
-	class Planet : public StaticBody2D {
-		GODOT_CLASS(Planet, StaticBody2D)
+	class Planet : public Area2D {
+		GODOT_CLASS(Planet, Area2D)
 
 		private:
 			bool m_hasExplode = false;
@@ -32,6 +33,6 @@ namespace godot {
 
 		// ---------------
 
-			void takeDamage();
+			void takeDamage(Node* body);
 	};
 }

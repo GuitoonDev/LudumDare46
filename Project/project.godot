@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Planet/Planet.gdns"
 }, {
-"base": "KinematicBody2D",
+"base": "Node2D",
 "class": "PlayerController",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/PlayerController/PlayerController.gdns"
@@ -39,10 +39,5 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 46"
-run/main_scene="res://GameContent/Gameplay/Planet/Planet.tscn"
+run/main_scene="res://GameContent/Gameplay/MeteoriteSpawner/MeteoriteSpawner.tscn"
 config/icon="res://icon.png"
-
-[display]
-
-window/size/width=1280
-window/size/height=720

@@ -1,11 +1,11 @@
 #pragma once
 
 #include <core/Godot.hpp>
-#include <KinematicBody2D.hpp>
+#include <Area2D.hpp>
 
 namespace godot {
-	class Bar : public KinematicBody2D {
-		GODOT_CLASS(Bar, KinematicBody2D)
+	class Bar : public Area2D {
+		GODOT_CLASS(Bar, Area2D)
 
 		private:
 			float m_width;
@@ -24,5 +24,9 @@ namespace godot {
 
 			float getWidth();
 			void setWidth(float p_width);
+
+		// ---------------
+
+			void sendBack(Node* body);
 	};
 }

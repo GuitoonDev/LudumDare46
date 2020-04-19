@@ -5,8 +5,10 @@
 [ext_resource path="res://GameContent/Gameplay/Bar/Bar.tscn" type="PackedScene" id=3]
 
 [node name="PlayerController" type="Node2D"]
+pause_mode = 1
 position = Vector2( 330.819, 258.727 )
 script = ExtResource( 1 )
+offsetRadius = 200.0
 speed = 4.0
 
 [node name="Player - Sprite" type="Sprite" parent="."]
