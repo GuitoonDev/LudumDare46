@@ -3,6 +3,8 @@
 using namespace godot;
 using namespace std;
 
+GameManager* GameManager::m_manager = nullptr;
+
 #pragma region Construction
 GameManager::GameManager() :
 m_score(0), 
@@ -14,6 +16,14 @@ m_finalScoreText(nullptr){}
 
 GameManager::~GameManager() {}
 #pragma endregion
+
+#pragma region Properties
+const GameManager* GameManager::GetGameManager()
+{
+	return m_manager;
+}
+#pragma endregion
+
 
 #pragma region Godot Methods
 void GameManager::_register_methods()
@@ -30,6 +40,9 @@ void GameManager::_ready()
 	m_titleScreen = cast_to<Control>(get_node("UI/Menu"));
 	m_defeatScreen = cast_to<Control>(get_node("UI/GameOverScreen"));
 	m_finalScoreText = cast_to<Label>(get_node("UI/GameOverScreen/Score_Text"));
+
+	//Set singleton
+	m_manager = this;
 
 	//Init score text
 	m_scoreText->set_text(to_string(m_score).c_str());
@@ -54,6 +67,7 @@ void GameManager::_input(InputEvent* p_input)
 		if (p_input->is_action_pressed("ui_cancel")) {
 			LeaveGame();
 		}
+
 		break;
 
 	case GameState::Playing:
