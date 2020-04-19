@@ -11,6 +11,7 @@ current = true
 
 [node name="Planet (Area2D)" type="Area2D" parent="."]
 script = ExtResource( 1 )
+radius = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet (Area2D)"]
 shape = SubResource( 1 )
