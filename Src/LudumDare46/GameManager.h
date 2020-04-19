@@ -20,6 +20,7 @@ namespace godot {
 
 		static void _register_methods();
 		void _process();
+		void _ready();
 		void _init();
 
 		void AddPoints(const int points);
