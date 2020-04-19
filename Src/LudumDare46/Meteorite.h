@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/Godot.hpp>
+#include <Node2D.hpp>
 #include <KinematicBody2D.hpp>
 #include <KinematicCollision2D.hpp>
 #include <time.h>
@@ -14,7 +15,6 @@ class Meteorite : public KinematicBody2D
 private:
 
 	float m_speed;
-	Vector2 m_target;
 
 	Vector2 m_velocity;
 
@@ -25,10 +25,10 @@ public:
 
 	static void _register_methods();
 	void _init();
+	void _ready();
 	void _physics_process(float delta);
 
 	void collide();
-
 };
 
 }
