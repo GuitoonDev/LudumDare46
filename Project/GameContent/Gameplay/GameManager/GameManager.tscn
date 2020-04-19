@@ -3,28 +3,13 @@
 [ext_resource path="res://GameContent/Gameplay/GameManager/GameManager.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/UI/FredokaOne-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GameContent/UI/DF_UIFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://GameContent/UI/Materials/MAT_FlashingUI.material" type="Material" id=4]
 
 [sub_resource type="DynamicFont" id=3]
 size = 80
 outline_size = 3
 outline_color = Color( 0.509804, 0.360784, 0, 1 )
 font_data = ExtResource( 2 )
-
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform float _FlashFrequency = 1.0;
-
-void fragment(){
-	vec4 color = texture(TEXTURE, UV);
-	
-	color.a *= (sin(TIME * _FlashFrequency) + 1.0) / 2.0;
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/_FlashFrequency = 5.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 26
@@ -38,6 +23,10 @@ size = 70
 outline_size = 5
 outline_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 2 )
 
 [node name="GameManager" type="Node"]
 script = ExtResource( 1 )
@@ -124,7 +113,7 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Label" parent="UI/Menu/CenterContainer/TitlePanel"]
-material = SubResource( 6 )
+material = ExtResource( 4 )
 margin_left = -126.5
 margin_top = 20.0
 margin_right = 126.5
@@ -137,6 +126,7 @@ __meta__ = {
 }
 
 [node name="GameOverScreen" type="Control" parent="UI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -173,13 +163,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -75.6647
+margin_left = -91.9097
 margin_top = -7.0
-margin_right = 9.33527
+margin_right = -6.90973
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 3 )
 text = "Score
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue_Message" type="Label" parent="UI/GameOverScreen"]
+material = ExtResource( 4 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.002
+margin_top = 81.4698
+margin_right = 157.998
+margin_bottom = 113.47
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.913725, 1, 0.768627, 1 )
+custom_colors/font_outline_modulate = Color( 0.121569, 0.145098, 0.0745098, 1 )
+text = "Press enter to play again"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -189,9 +197,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 23.7336
+margin_left = 8.39117
 margin_top = -7.0
-margin_right = 138.734
+margin_right = 123.391
 margin_bottom = 74.0
 custom_fonts/font = ExtResource( 3 )
 text = "XXXXX
