@@ -12,7 +12,15 @@
 #include <Curve.hpp>
 #include <Label.hpp>
 
+
 namespace godot {
+
+	enum GameState {
+		Idle,
+		Playing,
+		Over
+	};
+
 	class GameManager : public Node {
 		GODOT_CLASS(GameManager, Node)
 	public:
@@ -24,16 +32,21 @@ namespace godot {
 		void _ready();
 		void _init();
 
-		void AddPoints(const int points);
+		void AddPoints(const int p_points);
 		void StartGame();
 		void Lose();
 		void Pause();
 	private:
 		int m_score;
-		Label* m_label;
+		GameState m_gameState;
+		Label* m_scoreText;
 		Control* m_titleScreen;
+		Control* m_defeatScreen;
+		//Label* m_finalScoreText;
 
 		void ReloadGame();
-		void DisplayTitleScreen(const bool display);
+		void LeaveGame();
+		void DisplayGameOverScreen(const bool p_display);
+		void DisplayTitleScreen(const bool p_display);
 	};
 }
