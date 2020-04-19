@@ -1,9 +1,8 @@
 #include "PlayerTest.h"
-#include "PlayerController.h"
-#include "Planet.h"
-#include "Meteorite.h"
-#include "MeteoriteSpawner.h"
 #include "GameManager.h"
+#include "Meteorite.h"
+#include "Planet.h"
+#include "PlayerController.h"
 
 using namespace godot;
 
@@ -18,10 +17,8 @@ extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_opt
 extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	Godot::nativescript_init(handle);
 	register_class<PlayerTest>();
-
-	register_class<PlayerController>();
-	register_class<Planet>();
 	register_class<Meteorite>();
-	register_class<MeteoriteSpawner>();
+	register_class<Planet>();
 	register_class<GameManager>();
+	register_class<PlayerController>();
 }
