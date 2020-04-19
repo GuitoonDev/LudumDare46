@@ -8,13 +8,19 @@ GameManager::GameManager():m_score(0), m_label(nullptr){}
 GameManager::~GameManager(){}
 #pragma endregion
 
-
 #pragma region Godot Methods
 void GameManager::_register_methods()
 {
-	register_method((char*)"_process", &GameManager::_process);
-	register_signal<GameManager>((char *)"game_started", "owner", GODOT_VARIANT_TYPE_OBJECT);
-	register_signal<GameManager>((char *)"game_over", "owner", GODOT_VARIANT_TYPE_OBJECT);
+	register_method("_process", &GameManager::_process);
+	register_method("_ready", &GameManager::_ready);
+	register_signal<GameManager>("game_started", "owner", GODOT_VARIANT_TYPE_OBJECT);
+	register_signal<GameManager>("game_over", "owner", GODOT_VARIANT_TYPE_OBJECT);
+}
+
+void GameManager::_ready()
+{
+	m_label = cast_to<Label>(get_node("UI/HUD_Canvas/Score/ScoreDisplay"));
+	m_label->set_text(to_string(m_score).c_str());
 }
 
 void GameManager::_process()
@@ -22,7 +28,7 @@ void GameManager::_process()
 	Input* _input = Input::get_singleton();
 
 	if (_input->is_action_just_pressed("ui_accept")) {
-		StartGame();
+		AddPoints(20);
 	}
 
 	if (_input->is_action_just_pressed("ui_cancel")) {
@@ -30,25 +36,14 @@ void GameManager::_process()
 	}
 }
 
-void GameManager::_init()
-{
-	NodePath path = get_path();
-	Godot::print(path);
-	Node* _labelNode = get_node(NodePath("Control/ScoreDisplay"));
-	if (_labelNode != nullptr) {
-
-	}
-	//Godot::print(labelNode->get_name());
-	//m_label = cast_to<Label>(labelNode);
-	//m_label->set_text(String("Pwet"));
-}
-
+void GameManager::_init(){}
 #pragma endregion
 
 #pragma region Game Management
 void GameManager::AddPoints(const int points)
 {
 	m_score += points;
+	m_label->set_text(to_string(m_score).c_str());
 }
 
 //The start function of the game
