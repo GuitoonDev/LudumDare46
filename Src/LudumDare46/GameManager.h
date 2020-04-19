@@ -28,6 +28,9 @@ namespace godot {
 		GameManager();
 		~GameManager();
 
+		//Properties
+		static const GameManager* GetGameManager();
+
 		//Godot methods
 		static void _register_methods();
 		void _input(InputEvent* p_input);
@@ -40,6 +43,7 @@ namespace godot {
 
 	private:
 		int m_score;
+		static GameManager* m_manager;
 		GameState m_gameState;
 		Label* m_scoreText;
 		Control* m_titleScreen;
