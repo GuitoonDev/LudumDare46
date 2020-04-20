@@ -12,6 +12,7 @@
 #include <AnimationPlayer.hpp>
 #include <AudioStreamPlayer.hpp>
 
+
 namespace godot {
 	class Planet : public Area2D {
 		GODOT_CLASS(Planet, Area2D)

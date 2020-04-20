@@ -4,6 +4,7 @@ using namespace godot;
 
 #define IDLE_ANIMATION "Idle"
 #define HURT_ANIMATION "Hurt"
+#define DEATH_ANIMATION "Die"
 
 Planet::Planet():
 	timer(nullptr),
@@ -58,11 +59,7 @@ void Planet::setHealth(int p_health) {
 	}
 	else {
 		m_health = 0;
-
-		// FX
-
 		// Hide and disable colliders
-		hide();
 		get_node("PlayerController")->queue_free();
 		get_node("StaticBody2D")->queue_free();
 		get_node("Collider")->queue_free();
@@ -95,10 +92,18 @@ void Planet::setRadius(float p_radius) {
 void Planet::takeDamage(Node* body) {
 	setHealth(m_health - 1);
 
+	// FX
+	if (m_health > 0) {
+		m_animationplayer->stop();
+		m_animationplayer->play(HURT_ANIMATION);
+	} else {
+		m_animationplayer->stop();
+		m_animationplayer->play(DEATH_ANIMATION);
+	}
+
 	ShaderMaterial* _sm = cast_to<ShaderMaterial>(m_planetSprite->get_material().ptr());
 	_sm->set_shader_param("_State", 3.0 - m_health);
-	
-	m_animationplayer->play(HURT_ANIMATION);
+
 
 	// Screen shake
 	CameraBehaviour* _manager = CameraBehaviour::getManager();
