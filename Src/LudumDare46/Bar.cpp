@@ -18,6 +18,8 @@ void Bar::_init() {
 
 void Bar::_ready() {
 	connect("body_entered", this, "sendBack");
+
+	m_animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
 }
 
 // --------------------------------
@@ -25,5 +27,8 @@ void Bar::_ready() {
 void Bar::sendBack(Node * body) {
 	GameManager::GetGameManager()->AddPoints(50);
 
-	Godot::print("Send Back!");
+	Godot::print("Reflect");
+
+	m_animation->stop();
+	m_animation->play(ANIM_REFLECT);
 }

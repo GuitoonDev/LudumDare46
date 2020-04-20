@@ -24,41 +24,41 @@ void PlayerController::_ready() {
 	m_input = Input::get_singleton();
 	m_rotation = get_rotation();
 	
-	m_animation->play("Idle");
+	m_animation->play(ANIM_IDLE);
 	m_sprite->set_position(Vector2(0, -m_offsetRadius));
 }
 
 void PlayerController::_process(float delta) {
 	// Get input movement
-	if (m_input->is_action_just_pressed("ui_right")) {
+	if (m_input->is_action_just_pressed(INPUT_RIGHT)) {
 		m_movement = 1;
-		m_animation->play("Move");
+		m_animation->play(ANIM_MOVE);
 		m_sprite->set_flip_h(false);
 	}
-	else if (m_input->is_action_just_released("ui_right") && (m_movement > 0)) {
-		if (m_input->is_action_pressed("ui_left")) {
+	else if (m_input->is_action_just_released(INPUT_RIGHT) && (m_movement > 0)) {
+		if (m_input->is_action_pressed(INPUT_LEFT)) {
 			m_movement = -1;
 			m_sprite->set_flip_h(true);
 		}
 		else {
 			m_movement = 0;
-			m_animation->play("Idle");
+			m_animation->play(ANIM_IDLE);
 		}
 	}
 
-	if (m_input->is_action_just_pressed("ui_left")) {
+	if (m_input->is_action_just_pressed(INPUT_LEFT)) {
 		m_movement = -1;
 		m_sprite->set_flip_h(true);
-		m_animation->play("Move");
+		m_animation->play(ANIM_MOVE);
 	}
-	else if (m_input->is_action_just_released("ui_left") && (m_movement < 0)) {
-		if (m_input->is_action_pressed("ui_right")) {
+	else if (m_input->is_action_just_released(INPUT_LEFT) && (m_movement < 0)) {
+		if (m_input->is_action_pressed(INPUT_RIGHT)) {
 			m_movement = 1;
 			m_sprite->set_flip_h(false);
 		}
 		else {
 			m_movement = 0;
-			m_animation->play("Idle");
+			m_animation->play(ANIM_IDLE);
 		}
 	}
 
