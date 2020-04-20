@@ -64,4 +64,4 @@ __meta__ = {
 
 [node name="MeteorExplode" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -15.0
+volume_db = -25.0
