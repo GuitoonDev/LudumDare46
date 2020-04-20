@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/GameManager/GameManager.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/UI/FredokaOne-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://GameContent/UI/DF_UIFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://GameContent/UI/Materials/MAT_FlashingUI.material" type="Material" id=4]
+[ext_resource path="res://GameContent/Audio/scoree_increment.wav" type="AudioStream" id=5]
+[ext_resource path="res://GameContent/Audio/start_game.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -311,3 +313,11 @@ margin_bottom = 40.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 0.92549, 0.67451, 1 )
 text = "Pause"
+
+[node name="StartGame_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.0
+
+[node name="ScoreIncrement_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0

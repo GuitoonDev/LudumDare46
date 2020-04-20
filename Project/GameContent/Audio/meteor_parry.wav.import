@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/meteor_parry.wav-b311d471a01dff8243187ef8281c2efb.sample"
+
+[deps]
+
+source_file="res://GameContent/Audio/meteor_parry.wav"
+dest_files=[ "res://.import/meteor_parry.wav-b311d471a01dff8243187ef8281c2efb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

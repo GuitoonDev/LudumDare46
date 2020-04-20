@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/planet_damage.wav-e556fbe31a799682c2c1b907e2119539.sample"
+
+[deps]
+
+source_file="res://GameContent/Audio/planet_damage.wav"
+dest_files=[ "res://.import/planet_damage.wav-e556fbe31a799682c2c1b907e2119539.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
