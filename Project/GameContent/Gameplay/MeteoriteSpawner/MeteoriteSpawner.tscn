@@ -7,3 +7,6 @@ position = Vector2( 0, 1 )
 script = ExtResource( 1 )
 meteoriteInterval = 2.0
 instanceTimeActivation = PoolIntArray( 0, 5, 10, 15, 25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
