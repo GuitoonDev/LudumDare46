@@ -6,6 +6,10 @@
 #include "GameManager.h"
 #include "CameraBehaviour.h"
 #include <CollisionShape2D.hpp>
+#include <Sprite.hpp>
+#include <ShaderMaterial.hpp>
+#include <Material.hpp>
+#include <Shader.hpp>
 
 namespace godot {
 	class Planet : public Area2D {
@@ -16,6 +20,7 @@ namespace godot {
 			float m_radius;
 
 			Timer* timer;
+			Sprite* m_planetSprite;
 
 		public:
 			Planet();

@@ -22,6 +22,7 @@ void Planet::_init() {
 
 void Planet::_ready() {
 	timer = cast_to<Timer>(get_node("Timer"));
+	m_planetSprite = cast_to<Sprite>(get_node("Sprite"));
 
 	timer->connect("timeout", this, "onTimeOut");
 	connect("body_entered", this, "takeDamage");
@@ -79,6 +80,10 @@ void Planet::setRadius(float p_radius) {
 /// </summary>
 void Planet::takeDamage(Node* body) {
 	setHealth(m_health - 1);
+
+	ShaderMaterial* _sm = cast_to<ShaderMaterial>(m_planetSprite->get_material().ptr());
+	_sm->set_shader_param("_State", 3.0 - m_health);
+	
 
 	// Screen shake
 	CameraBehaviour* _manager = CameraBehaviour::getManager();

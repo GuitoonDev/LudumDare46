@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://GameContent/Gameplay/PlayerController/PlayerController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameContent/Gameplay/Planet/MAT_Planet.material" type="Material" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -14,6 +15,7 @@ health = 3
 radius = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
 scale = Vector2( 0.854877, 0.854877 )
 texture = ExtResource( 2 )
 
