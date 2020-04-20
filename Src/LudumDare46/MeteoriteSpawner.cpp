@@ -29,36 +29,19 @@ void MeteoriteSpawner::_init()
 }
 
 void MeteoriteSpawner::_ready() {
-	//Godot::print("MeteoriteSpawner::_ready");
-
-	ResourceLoader *resourceLoader = ResourceLoader::get_singleton();
-	m_meteorite = resourceLoader->load("res://GameContent/Gameplay/Meteorite/Meteorite.tscn");
-
-	Node2D* meteoriteNode;
-	m_windowSize = get_viewport_rect().size;
-
-	int _rand;
-
-	int _size = m_instanceTimeActivation.size();
-	for (int _i = 0; _i < _size; _i++) {
-		meteoriteNode = cast_to<Node2D>(m_meteorite->instance());
-
-		// Set different name
-		meteoriteNode->set_name("Meteorite " + String(std::to_string(_i).c_str()));
-
-		// Set random position
-		meteoriteNode->set_z_index(-100);
-		setRandomPosition(meteoriteNode, _i);
-
-		m_instances.push_back(meteoriteNode);
-
-		get_tree()->get_root()->call_deferred("add_child", meteoriteNode);
-		meteoriteNode->connect("collide", this, "onMeteoriteCollide");
+	// Connect to game start
+	GameManager* _manager = GameManager::GetGameManager();
+	if (_manager) {
+		_manager->connect("game_started", this, "onGameStarted");
 	}
 }
 
 void MeteoriteSpawner::_process(float delta)
 {
+	if (m_instances.size() == 0) {
+		return;
+	}
+
 	m_timeSinceStart += delta;
 	m_meteoriteIntervalTimer += delta;
 
@@ -111,11 +94,11 @@ void MeteoriteSpawner::_process(float delta)
 
 		Vector2 _distance = _meteorite->getMaxDistance();
 		if (_distance.x > 0) {
-			if (_meteorite->get_position().x > 0) {
+			if (_meteorite->get_position().x > _distance.x) {
 				setRandomPosition(m_instances[_i], m_timeSinceStart);
 			}
 		}
-		else if (_meteorite->get_position().x < 0) {
+		else if (_meteorite->get_position().x < _distance.x) {
 			setRandomPosition(m_instances[_i], m_timeSinceStart);
 		}
 	}
@@ -148,8 +131,31 @@ void MeteoriteSpawner::onMeteoriteCollide(Node* p_meteorite)
 	setRandomPosition((Node2D*)p_meteorite, 1);
 }
 
-void godot::MeteoriteSpawner::onGameStarted()
-{
+void godot::MeteoriteSpawner::onGameStarted() {
+	ResourceLoader *resourceLoader = ResourceLoader::get_singleton();
+	m_meteorite = resourceLoader->load("res://GameContent/Gameplay/Meteorite/Meteorite.tscn");
+
+	Node2D* meteoriteNode;
+	m_windowSize = get_viewport_rect().size;
+
+	int _rand;
+
+	int _size = m_instanceTimeActivation.size();
+	for (int _i = 0; _i < _size; _i++) {
+		meteoriteNode = cast_to<Node2D>(m_meteorite->instance());
+
+		// Set different name
+		meteoriteNode->set_name("Meteorite " + String(std::to_string(_i).c_str()));
+
+		// Set random position
+		meteoriteNode->set_z_index(-100);
+		setRandomPosition(meteoriteNode, _i);
+
+		m_instances.push_back(meteoriteNode);
+
+		call_deferred("add_child", meteoriteNode);
+		meteoriteNode->connect("collide", this, "onMeteoriteCollide");
+	}
 }
 
 void MeteoriteSpawner::setRandomPosition(Node2D* p_meteorite, int p_randomHelper)

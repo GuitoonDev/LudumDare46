@@ -15,8 +15,6 @@ void Planet::_register_methods() {
 
 	register_property<Planet, int>("health", &Planet::setHealth, &Planet::getHealth, 0);
 	register_property<Planet, float>("radius", &Planet::setRadius, &Planet::getRadius, 0);
-
-	register_signal<Planet>("explode", "owner", GODOT_VARIANT_TYPE_OBJECT);
 }
 
 void Planet::_init() {
@@ -38,9 +36,6 @@ int Planet::getHealth() {
 }
 
 void Planet::setHealth(int p_health) {
-	if (m_hasExplode)
-		return;
-
 	Godot::print("Damaged");
 
 	if (p_health > 0) {
@@ -49,14 +44,15 @@ void Planet::setHealth(int p_health) {
 	else {
 		m_health = 0;
 
-		// Explode
-		m_hasExplode = true;
-
 		// FX
+
+		// Hide and disable colliders
 		hide();
+		get_node("PlayerController")->queue_free();
+		get_node("StaticBody2D")->queue_free();
+		get_node("Collider")->queue_free();
 
 		// Event
-		emit_signal("explode", this);
 		timer->start();
 
 		Godot::print("Explosion!");

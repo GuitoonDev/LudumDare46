@@ -6,4 +6,3 @@
 current = true
 script = ExtResource( 1 )
 "Screen shake Duration" = 1.0
-"Screen shake Force" = 25.0
