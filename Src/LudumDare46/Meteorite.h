@@ -5,6 +5,9 @@
 #include <KinematicBody2D.hpp>
 #include <KinematicCollision2D.hpp>
 #include <time.h>
+#include "MeteoriteSpawner.h"
+
+#include <string>
 
 namespace godot {
 
@@ -13,14 +16,13 @@ class Meteorite : public KinematicBody2D
 	GODOT_CLASS(Meteorite, KinematicBody2D)
 
 private:
-
-	static int s_instanceCount;
-
+	bool m_isActive;
 	float m_speed;
 
 	Vector2 m_velocity;
 
 public:
+	
 
 	Meteorite();
 	~Meteorite();
@@ -31,6 +33,9 @@ public:
 	void _physics_process(float delta);
 
 	void collide();
+
+	bool getIsActive();
+	void setIsActive(bool p_isActive);
 };
 
 }
