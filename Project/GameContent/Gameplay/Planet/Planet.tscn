@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,9 +8,49 @@
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet_Eyebrows.png" type="Texture" id=6]
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet__Mouth.png" type="Texture" id=7]
 [ext_resource path="res://GameContent/Audio/planet_damage.wav" type="AudioStream" id=8]
+[ext_resource path="res://GameContent/Gameplay/Planet/FX_Explosion.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FX_Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Planet:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.855, 0.855 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Planet:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Hurt"
@@ -123,6 +163,18 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 4.38771, 24.0, 4.38771 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("FX_Explosion/PS_RockShard:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -240,7 +292,7 @@ texture = ExtResource( 5 )
 
 [node name="Mouth" type="Sprite" parent="Planet"]
 position = Vector2( 0, 10.491 )
-scale = Vector2( 0.205, 0.161 )
+scale = Vector2( 0.204947, 0.161069 )
 texture = ExtResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -263,9 +315,16 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 4 )
 anims/Hurt = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 
 [node name="PlanetDamageAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -15.0
+
+[node name="FX_Explosion" parent="." instance=ExtResource( 9 )]
+emission_sphere_radius = 28.77
+scale_amount = 1.0
+
+[editable path="FX_Explosion"]
