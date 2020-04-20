@@ -4,6 +4,7 @@
 #include <Area2D.hpp>
 #include <Timer.hpp>
 #include "GameManager.h"
+#include "CameraBehaviour.h"
 
 namespace godot {
 	class Planet : public Area2D {

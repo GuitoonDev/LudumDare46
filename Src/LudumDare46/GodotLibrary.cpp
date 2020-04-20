@@ -4,6 +4,7 @@
 #include "MeteoriteSpawner.h"
 #include "GameManager.h"
 #include "Bar.h"
+#include "CameraBehaviour.h"
 
 using namespace godot;
 
@@ -24,4 +25,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle) {
 	register_class<MeteoriteSpawner>();
 	register_class<GameManager>();
 	register_class<Bar>();
+	register_class<CameraBehaviour>();
 }

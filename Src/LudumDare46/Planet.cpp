@@ -83,6 +83,12 @@ void Planet::setRadius(float p_radius) {
 /// </summary>
 void Planet::takeDamage(Node* body) {
 	setHealth(m_health - 1);
+
+	// Screen shake
+	CameraBehaviour* _manager = CameraBehaviour::getManager();
+	if (_manager) {
+		_manager->screenShake();
+	}
 }
 
 void Planet::onTimeOut() {

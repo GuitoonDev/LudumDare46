@@ -44,6 +44,7 @@ public:
 	void _process(float delta);
 
 	void onMeteoriteCollide(Node* p_meteorite);
+	void onGameStarted();
 };
 
 }
