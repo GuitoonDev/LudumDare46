@@ -9,7 +9,6 @@ namespace godot {
 		GODOT_CLASS(Bar, Area2D)
 
 		private:
-			float m_width;
 
 		public:
 			Bar();
@@ -20,11 +19,6 @@ namespace godot {
 			static void _register_methods();
 			void _init();
 			void _ready();
-
-		// ---------------
-
-			float getWidth();
-			void setWidth(float p_width);
 
 		// ---------------
 
