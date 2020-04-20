@@ -31,6 +31,7 @@ void Planet::_init() {
 void Planet::_ready() {
 	timer = cast_to<Timer>(get_node("Timer"));
 	m_planetSprite = cast_to<Sprite>(get_node("Planet"));
+	m_planetDamageAudio = cast_to<AudioStreamPlayer>(get_node("PlanetDamageAudio"));
 	
 	timer->connect("timeout", this, "onTimeOut");
 	connect("body_entered", this, "takeDamage");
@@ -104,6 +105,8 @@ void Planet::takeDamage(Node* body) {
 	if (_manager) {
 		_manager->screenShake();
 	}
+
+	m_planetDamageAudio->play();
 }
 
 void Planet::onTimeOut() {

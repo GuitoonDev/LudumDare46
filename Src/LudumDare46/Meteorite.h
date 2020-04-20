@@ -5,6 +5,7 @@
 #include <KinematicBody2D.hpp>
 #include <KinematicCollision2D.hpp>
 #include <time.h>
+#include <AudioStreamPlayer.hpp>
 #include "MeteoriteSpawner.h"
 
 #include <string>
@@ -22,6 +23,8 @@ private:
 
 	Vector2 m_velocity;
 	Vector2 m_maxDistance;
+
+	AudioStreamPlayer* m_meteorExplodeAudio;
 
 public:
 	Meteorite();
