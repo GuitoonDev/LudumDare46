@@ -16,7 +16,7 @@
 #include <AudioStreamPlayer.hpp>
 #include <iomanip>
 #include <sstream>
-#include <AnimationPlayer.hpp>
+#include <CPUParticles.hpp>
 
 namespace godot {
 
