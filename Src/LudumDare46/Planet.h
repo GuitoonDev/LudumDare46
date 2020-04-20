@@ -8,8 +8,8 @@
 #include <CollisionShape2D.hpp>
 #include <Sprite.hpp>
 #include <ShaderMaterial.hpp>
-#include <Material.hpp>
 #include <Shader.hpp>
+#include <AnimationPlayer.hpp>
 
 namespace godot {
 	class Planet : public Area2D {
@@ -21,6 +21,7 @@ namespace godot {
 
 			Timer* timer;
 			Sprite* m_planetSprite;
+			AnimationPlayer* m_animationplayer;
 
 		public:
 			Planet();
@@ -44,5 +45,6 @@ namespace godot {
 
 			void takeDamage(Node* body);
 			void onTimeOut();
+			void onAnimationEnd(String animationName);
 	};
 }

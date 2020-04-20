@@ -2,7 +2,14 @@
 
 using namespace godot;
 
-Planet::Planet():timer(nullptr) { }
+#define IDLE_ANIMATION "Idle"
+#define HURT_ANIMATION "Hurt"
+
+Planet::Planet():
+	timer(nullptr),
+	m_planetSprite(nullptr),
+	m_animationplayer(nullptr)
+{ }
 Planet::~Planet() { }
 
 // --------------------------------
@@ -12,6 +19,7 @@ void Planet::_register_methods() {
 
 	register_method("takeDamage", &Planet::takeDamage);
 	register_method("onTimeOut", &Planet::onTimeOut);
+	register_method("onAnimationEnd", &Planet::onAnimationEnd);
 
 	register_property<Planet, int>("health", &Planet::setHealth, &Planet::getHealth, 0);
 	register_property<Planet, float>("radius", &Planet::setRadius, &Planet::getRadius, 0);
@@ -22,10 +30,15 @@ void Planet::_init() {
 
 void Planet::_ready() {
 	timer = cast_to<Timer>(get_node("Timer"));
-	m_planetSprite = cast_to<Sprite>(get_node("Sprite"));
-
+	m_planetSprite = cast_to<Sprite>(get_node("Planet"));
+	
 	timer->connect("timeout", this, "onTimeOut");
 	connect("body_entered", this, "takeDamage");
+
+
+	m_animationplayer = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
+	m_animationplayer->connect("animation_finished", this, "onAnimationEnd");
+	m_animationplayer->play(IDLE_ANIMATION);
 
 	set_scale(Vector2(m_radius, m_radius));
 }
@@ -84,6 +97,7 @@ void Planet::takeDamage(Node* body) {
 	ShaderMaterial* _sm = cast_to<ShaderMaterial>(m_planetSprite->get_material().ptr());
 	_sm->set_shader_param("_State", 3.0 - m_health);
 	
+	m_animationplayer->play(HURT_ANIMATION);
 
 	// Screen shake
 	CameraBehaviour* _manager = CameraBehaviour::getManager();
@@ -97,4 +111,9 @@ void Planet::onTimeOut() {
 
 	// Destroy
 	queue_free();
+}
+
+void Planet::onAnimationEnd(String animationName)
+{
+	m_animationplayer->play(IDLE_ANIMATION);
 }
