@@ -85,6 +85,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Time" type="Control" parent="UI/HUD"]
+margin_left = 520.0
+margin_top = 15.0
+margin_right = 560.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="UI/HUD/Time"]
+margin_right = 97.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 466.631, 225.944 )
+custom_fonts/font = ExtResource( 3 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeDisplay" type="Label" parent="UI/HUD/Time"]
+margin_left = 94.2056
+margin_right = 191.206
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 3 )
+text = "XXX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Menu" type="Control" parent="UI"]
 visible = false
 anchor_right = 1.0
@@ -177,13 +206,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -91.9097
-margin_top = -7.0
-margin_right = -6.90973
-margin_bottom = 74.0
+margin_left = -105.415
+margin_top = -12.4123
+margin_right = -20.4149
+margin_bottom = 68.5877
 custom_fonts/font = ExtResource( 3 )
 text = "Score
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time_Label" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.415
+margin_top = 47.5877
+margin_right = -20.4151
+margin_bottom = 128.588
+custom_fonts/font = ExtResource( 3 )
+text = "Time"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -195,9 +239,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -144.002
-margin_top = 81.4698
+margin_top = 139.373
 margin_right = 157.998
-margin_bottom = 113.47
+margin_bottom = 171.373
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.913725, 1, 0.768627, 1 )
 custom_colors/font_outline_modulate = Color( 0.121569, 0.145098, 0.0745098, 1 )
@@ -212,9 +256,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 8.39117
-margin_top = -7.0
+margin_top = -12.4123
 margin_right = 123.391
-margin_bottom = 74.0
+margin_bottom = 68.5877
+custom_fonts/font = ExtResource( 3 )
+text = "XXXXX
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time_Text" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.39105
+margin_top = 47.5877
+margin_right = 123.391
+margin_bottom = 128.588
 custom_fonts/font = ExtResource( 3 )
 text = "XXXXX
 "
