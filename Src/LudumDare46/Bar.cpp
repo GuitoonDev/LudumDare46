@@ -20,6 +20,7 @@ void Bar::_ready() {
 	connect("body_entered", this, "sendBack");
 
 	m_animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
+	m_meteorParryAudio = cast_to<AudioStreamPlayer>(get_node("MeteorParryAudio"));
 }
 
 // --------------------------------
@@ -31,4 +32,6 @@ void Bar::sendBack(Node * body) {
 
 	m_animation->stop();
 	m_animation->play(ANIM_REFLECT);
+
+	m_meteorParryAudio->play();
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=20 format=2]
+=======
+[gd_scene load_steps=12 format=2]
+>>>>>>> development
 
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,8 +12,11 @@
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet_Eyebrows.png" type="Texture" id=6]
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet__Mouth.png" type="Texture" id=7]
 [ext_resource path="res://GameContent/Audio/planet_damage.wav" type="AudioStream" id=8]
+<<<<<<< HEAD
 [ext_resource path="res://GenericContent/Textures/Particles/TEX_Dust.png" type="Texture" id=9]
 [ext_resource path="res://GenericContent/Textures/Particles/Planet Fragment.png" type="Texture" id=10]
+=======
+>>>>>>> development
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -305,6 +312,7 @@ anims/Idle = SubResource( 3 )
 [node name="PlanetDamageAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -15.0
+<<<<<<< HEAD
 
 [node name="FX_Explosion" type="CPUParticles2D" parent="."]
 material = SubResource( 4 )
@@ -343,3 +351,5 @@ angle_random = 1.0
 scale_amount = 0.03
 scale_amount_random = 0.2
 scale_amount_curve = SubResource( 9 )
+=======
+>>>>>>> development
