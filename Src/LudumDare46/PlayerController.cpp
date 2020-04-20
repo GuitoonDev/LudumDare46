@@ -29,6 +29,8 @@ void PlayerController::_ready() {
 }
 
 void PlayerController::_process(float delta) {
+	if (!m_animation || !m_sprite) return;
+
 	// Get input movement
 	if (m_input->is_action_just_pressed(INPUT_RIGHT)) {
 		m_movement = 1;

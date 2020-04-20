@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 66.14, 33.582 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Reflect"
+length = 0.5
 step = 0.01
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Sprite:scale:x")
@@ -16,8 +17,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.0833609, -0.0303523, 1, -0.0587052, 0, 0.068595, 0, 0.14959, -0.0726309, 0.00418928, 0.068347, -0.00394219, 0.766332, -0.0577824, -0.00410733, 0.066033, 0.00469381, 0.25575, -0.079518, 0.00197728, 0.0823002, -0.00204647, 0.639951, -0.0564739, -0.0100129, 0.0855371, 0.0151658, 0.5, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.13, 0.26, 0.42, 0.56, 0.76, 1, 2 )
+"points": PoolRealArray( 0.5, -0.25, 0.0322725, 0.0588031, -0.00759089, 0.959567, -0.0474927, 0.00505525, 0.0793374, -0.00844487, 0.295389, -0.0964056, 0.0196512, 0.0918227, -0.018717, 0.686887, -0.0443193, -0.00632237, 0.0386968, 0.00552028, 0.5, -0.046468, -0.00164737, 0.0538431, 0.00190884 ),
+"times": PoolRealArray( 0, 0.11, 0.24, 0.38, 0.5 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Sprite:scale:y")
@@ -26,8 +27,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0, 0.0550155, -0.070197, 0.0737606, -0.0610973, -0.00717092, 0.0861432, 0.0101105, 1.25669, -0.0866943, -0.00722891, 0.0890266, 0.00742339, 0.300102, -0.0802521, -0.00775095, 0.104683, 0.0101106, 1.00899, -0.0804133, -0.00722891, 0.0863298, 0.00776078, 0.230218, -0.0806612, -0.0122094, 0.100193, 0.0151658, 0.5, -0.0916117, -0.0015969, 0.25, 0.00435779 ),
-"times": PoolRealArray( 0, 0.11, 0.28, 0.43, 0.58, 0.8, 1 )
+"points": PoolRealArray( 0.5, -0.25, 0.0178877, 0.0507321, -0.00362992, 0.145286, -0.0610973, -0.00609528, 0.0875622, 0.00873551, 0.774242, -0.0462958, -0.0159986, 0.0505563, 0.017471, 0.267583, -0.0802521, -0.00775095, 0.104683, 0.0101106, 0.5, -0.02802, -0.00534374, 0.0469251, 0.00894916 ),
+"times": PoolRealArray( 0, 0.09, 0.24, 0.39, 0.5 )
 }
 
 [node name="Bar (Area2D)" type="Area2D"]
@@ -39,7 +40,7 @@ position = Vector2( 0.527039, -18.1829 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Reflect = SubResource( 3 )
+anims/Reflect = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
