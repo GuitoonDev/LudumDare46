@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Bar/Bar.gdns"
 }, {
-"base": "Camera2D",
+"base": "",
 "class": "CameraBehaviour",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Camera/CameraBehaviour.gdns"
@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 46"
-run/main_scene="res://GameContent/Levels/SCN_MainLevel.tscn"
+run/main_scene="res://GameContent/Levels/Lucas_MainLevel2.tscn"
 config/icon="res://icon.png"
 
 [display]

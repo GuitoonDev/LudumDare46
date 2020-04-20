@@ -52,7 +52,7 @@ anims/Move = SubResource( 2 )
 
 [node name="Player - Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -81.8969 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.237976, 0.274049 )
 texture = ExtResource( 2 )
 
 [node name="Bar (KinematicBody2D)" parent="Player - Sprite" instance=ExtResource( 3 )]
