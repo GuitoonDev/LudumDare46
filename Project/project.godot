@@ -9,28 +9,34 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "Area2D",
 "class": "Bar",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Bar/Bar.gdns"
+}, {
+"base": "Camera2D",
+"class": "CameraBehaviour",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/Camera/CameraBehaviour.gdns"
 }, {
 "base": "Node",
 "class": "GameManager",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
 }, {
-"base": "",
+"base": "Area2D",
 "class": "Planet",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/Planet/Planet.gdns"
 }, {
-"base": "",
+"base": "Node2D",
 "class": "PlayerController",
 "language": "NativeScript",
 "path": "res://GameContent/Gameplay/PlayerController/PlayerController.gdns"
 } ]
 _global_script_class_icons={
 "Bar": "",
+"CameraBehaviour": "",
 "GameManager": "",
 "Planet": "",
 "PlayerController": ""

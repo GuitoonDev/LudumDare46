@@ -4,13 +4,14 @@
 #include <Area2D.hpp>
 #include <Timer.hpp>
 #include "GameManager.h"
+#include "CameraBehaviour.h"
+#include <CollisionShape2D.hpp>
 
 namespace godot {
 	class Planet : public Area2D {
 		GODOT_CLASS(Planet, Area2D)
 
 		private:
-			bool m_hasExplode = false;
 			int m_health;
 			float m_radius;
 

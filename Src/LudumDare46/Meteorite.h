@@ -20,10 +20,9 @@ private:
 	float m_speed;
 
 	Vector2 m_velocity;
+	Vector2 m_maxDistance;
 
 public:
-	
-
 	Meteorite();
 	~Meteorite();
 
@@ -36,6 +35,10 @@ public:
 
 	bool getIsActive();
 	void setIsActive(bool p_isActive);
+
+	Vector2 getMaxDistance();
+
+	void pool();
 };
 
 }

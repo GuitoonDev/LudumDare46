@@ -7,25 +7,29 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
 
-[node name="Camera2D" type="Camera2D"]
-current = true
-
-[node name="Planet (Area2D)" type="Area2D" parent="."]
+[node name="Planet (Area2D)" type="Area2D"]
+collision_mask = 2
 script = ExtResource( 1 )
 health = 3
 radius = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet (Area2D)"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Planet (Area2D)"]
+[node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.854877, 0.854877 )
 texture = ExtResource( 2 )
 
-[node name="Timer" type="Timer" parent="Planet (Area2D)"]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
-autostart = true
 
-[node name="PlayerController" parent="Planet (Area2D)" instance=ExtResource( 3 )]
+[node name="PlayerController" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2( 0.9, 0.9 )
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )

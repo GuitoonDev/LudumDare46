@@ -45,9 +45,6 @@ void GameManager::_ready()
 	m_finalScoreText = cast_to<Label>(get_node("UI/GameOverScreen/Score_Text"));
 	m_pauseScreen = cast_to<Control>(get_node("UI/PauseMenu"));
 
-	//Set singleton
-	m_manager = this;
-
 	//Init score text
 	m_scoreText->set_text(to_string(m_score).c_str());
 
@@ -98,7 +95,10 @@ void GameManager::_input(InputEvent* p_input)
 	}
 }
 
-void GameManager::_init() {}
+void GameManager::_init() {
+	//Set singleton
+	m_manager = this;
+}
 #pragma endregion
 
 #pragma region Game Management
