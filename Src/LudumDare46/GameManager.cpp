@@ -35,12 +35,15 @@ void GameManager::_register_methods()
 	register_method("_input", &GameManager::_input);
 	register_method("_ready", &GameManager::_ready);
 	register_method("_process", &GameManager::_process);
+	register_method("StopFlash", &GameManager::StopFlash);
 	register_signal<GameManager>("game_started", "owner", GODOT_VARIANT_TYPE_OBJECT);
 	register_signal<GameManager>("game_over", "owner", GODOT_VARIANT_TYPE_OBJECT);
 }
 
 void GameManager::_ready()
 {
+	m_flashTimer = cast_to<Timer>(get_node("UI/HUD/Flash/FlashTimer"));
+	m_flashScreen = cast_to<Control>(get_node("UI/HUD/Flash/FlashScreen"));
 	m_scoreText = cast_to<Label>(get_node("UI/HUD/Score/ScoreDisplay"));
 	m_timeText = cast_to<Label>(get_node("UI/HUD/Time/TimeDisplay"));
 	m_titleScreen = cast_to<Control>(get_node("UI/Menu"));
@@ -48,6 +51,8 @@ void GameManager::_ready()
 	m_finalScoreText = cast_to<Label>(get_node("UI/GameOverScreen/Score_Text"));
 	m_finalTimeText = cast_to<Label>(get_node("UI/GameOverScreen/Time_Text"));
 	m_pauseScreen = cast_to<Control>(get_node("UI/PauseMenu"));
+
+	m_flashTimer->connect("timeout", this, "StopFlash");
 
 	//Init score text
 	m_scoreText->set_text(to_string(m_score).c_str());
@@ -124,6 +129,11 @@ void GameManager::AddPoints(const int p_points)
 	m_scoreText->set_text(to_string(m_score).c_str());
 }
 
+void GameManager::Flash() {
+	m_flashTimer->start();
+	m_flashScreen->show();
+}
+
 void GameManager::StartGame()
 {
 	Godot::print("Start game");
@@ -174,6 +184,10 @@ void GameManager::DisplayTitleScreen(const bool p_display)
 	} else {
 		m_titleScreen->hide();
 	}
+}
+
+void GameManager::StopFlash() {
+	m_flashScreen->hide();
 }
 
 void GameManager::LeaveGame()

@@ -116,6 +116,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Flash" type="Control" parent="UI/HUD"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashTimer" type="Timer" parent="UI/HUD/Flash"]
+one_shot = true
+
+[node name="FlashScreen" type="ColorRect" parent="UI/HUD/Flash"]
+margin_right = 1000.0
+margin_bottom = 1000.0
+color = Color( 0.882353, 0.882353, 0.882353, 1 )
+
 [node name="Menu" type="Control" parent="UI"]
 visible = false
 anchor_right = 1.0
