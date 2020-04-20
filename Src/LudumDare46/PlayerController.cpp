@@ -19,35 +19,46 @@ void PlayerController::_init() {
 }
 
 void PlayerController::_ready() {
+	m_animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
+	m_sprite = cast_to<Sprite>(get_node("Player - Sprite"));
 	m_input = Input::get_singleton();
 	m_rotation = get_rotation();
 	
-	((Node2D*)get_child(0))->set_position(Vector2(0, -m_offsetRadius));
+	m_animation->play("Idle");
+	m_sprite->set_position(Vector2(0, -m_offsetRadius));
 }
 
 void PlayerController::_process(float delta) {
 	// Get input movement
 	if (m_input->is_action_just_pressed("ui_right")) {
 		m_movement = 1;
+		m_animation->play("Move");
+		m_sprite->set_flip_h(false);
 	}
 	else if (m_input->is_action_just_released("ui_right") && (m_movement > 0)) {
 		if (m_input->is_action_pressed("ui_left")) {
 			m_movement = -1;
+			m_sprite->set_flip_h(true);
 		}
 		else {
 			m_movement = 0;
+			m_animation->play("Idle");
 		}
 	}
 
 	if (m_input->is_action_just_pressed("ui_left")) {
 		m_movement = -1;
+		m_sprite->set_flip_h(true);
+		m_animation->play("Move");
 	}
 	else if (m_input->is_action_just_released("ui_left") && (m_movement < 0)) {
 		if (m_input->is_action_pressed("ui_right")) {
 			m_movement = 1;
+			m_sprite->set_flip_h(false);
 		}
 		else {
 			m_movement = 0;
+			m_animation->play("Idle");
 		}
 	}
 

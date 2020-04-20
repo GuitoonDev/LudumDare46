@@ -10,7 +10,7 @@
 
 [node name="GameManager" parent="." instance=ExtResource( 1 )]
 
-[node name="Camera2D" parent="." instance=ExtResource( 2 )]
+[node name="Planet" parent="." instance=ExtResource( 2 )]
 
 [node name="MeteoriteSpawner" parent="." instance=ExtResource( 4 )]
 screenOffset = 100.0
