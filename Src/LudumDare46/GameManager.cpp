@@ -52,6 +52,11 @@ void GameManager::_ready()
 	m_finalTimeText = cast_to<Label>(get_node("UI/GameOverScreen/Time_Text"));
 	m_pauseScreen = cast_to<Control>(get_node("UI/PauseMenu"));
 
+	m_startGameAudio = cast_to<AudioStreamPlayer>(get_node("StartGame_Audio"));
+	m_scoreIncrementAudio = cast_to<AudioStreamPlayer>(get_node("ScoreIncrement_Audio"));
+
+	m_musicLoopAudio = cast_to<AudioStreamPlayer>(get_node("MusicLoop_Audio"));
+
 	m_flashTimer->connect("timeout", this, "StopFlash");
 
 	//Init score text
@@ -127,6 +132,8 @@ void GameManager::AddPoints(const int p_points)
 {
 	m_score += p_points;
 	m_scoreText->set_text(to_string(m_score).c_str());
+
+	m_scoreIncrementAudio->play();
 }
 
 void GameManager::Flash() {
@@ -140,6 +147,9 @@ void GameManager::StartGame()
 	DisplayTitleScreen(false);
 	m_gameState = GameState::Playing;
 	emit_signal("game_started", this);
+
+	m_startGameAudio->play();
+	m_musicLoopAudio->play();
 }
 
 void GameManager::Lose()
@@ -148,12 +158,23 @@ void GameManager::Lose()
 	emit_signal("game_over", this);
 
 	DisplayGameOverScreen(true);
+	m_musicLoopAudio->stop();
 }
 
 void GameManager::SetPauseMode()
 {
 	bool _isPaused = get_tree()->is_paused();
-	_isPaused ? m_pauseScreen->hide() : m_pauseScreen->show();
+	if (_isPaused)
+	{
+		m_pauseScreen->hide();
+		m_musicLoopAudio->play();
+	}
+	else
+	{
+		m_pauseScreen->show();
+		m_musicLoopAudio->stop();
+	}
+
 	get_tree()->set_pause(!_isPaused);
 }
 
