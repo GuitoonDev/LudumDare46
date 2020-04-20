@@ -65,8 +65,11 @@ void MeteoriteSpawner::_process(float delta)
 		{
 			// Activate meteorite
 			if (!(as<Meteorite>(m_instances[m_poolIndex]))->getIsActive()) {
-				(as<Meteorite>(m_instances[m_poolIndex]))->setIsActive(true);
 				Godot::print("Send");
+
+				// Set random position again
+				setRandomPosition(m_instances[m_poolIndex], m_poolIndex);
+				(as<Meteorite>(m_instances[m_poolIndex]))->setIsActive(true);
 
 				// Increase pool index
 				m_poolIndex++;
@@ -125,10 +128,8 @@ void MeteoriteSpawner::_process(float delta)
 	//}
 }
 
-void MeteoriteSpawner::onMeteoriteCollide(Node* p_meteorite)
-{
-	Godot::print("onMeteoriteCollide : " + p_meteorite->get_name());
-	setRandomPosition((Node2D*)p_meteorite, 1);
+void MeteoriteSpawner::onMeteoriteCollide(Node* p_meteorite) {
+	setRandomPosition((Node2D*)p_meteorite, int(m_timeSinceStart * 10000 - (floor(m_timeSinceStart)) * 10000));
 }
 
 void godot::MeteoriteSpawner::onGameStarted() {
@@ -163,7 +164,8 @@ void MeteoriteSpawner::setRandomPosition(Node2D* p_meteorite, int p_randomHelper
 	Vector2 _pos;
 
 	// Set random position
-	srand(time(NULL) + (p_randomHelper * 25));
+	srand(time(NULL) * p_randomHelper  * 100.0);
+
 	int _rand = rand() % 10;
 
 	if (_rand > 7.5) {

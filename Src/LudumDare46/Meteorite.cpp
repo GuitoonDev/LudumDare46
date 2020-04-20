@@ -2,7 +2,7 @@
 
 using namespace godot;
 
-Meteorite::Meteorite() :m_isActive(false)
+Meteorite::Meteorite() :m_isActive(false), m_isDeactivating(false)
 {
 }
 
@@ -41,6 +41,12 @@ void Meteorite::_physics_process(float delta)
 	if (!getIsActive()) {
 		return;
 	}
+	if (m_isDeactivating) {
+		emit_signal("collide", this);
+		m_isActive = false;
+		m_isDeactivating = false;
+		return;
+	}
 
 	Ref<KinematicCollision2D> collision = move_and_collide(m_velocity * m_speed * delta);
 
@@ -50,21 +56,16 @@ void Meteorite::_physics_process(float delta)
 	}
 }
 
-void Meteorite::collide()
-{
-	emit_signal("collide", this);
-	m_isActive = false;
+void Meteorite::collide() {
+	m_isDeactivating = true;
 }
 
-bool Meteorite::getIsActive()
-{
+bool Meteorite::getIsActive() {
 	return m_isActive;
 }
 
-void Meteorite::setIsActive(bool p_isActive)
-{
+void Meteorite::setIsActive(bool p_isActive) {
 	m_isActive = p_isActive;
-	//Godot::print(get_name() + " | " + String(std::to_string(m_isActive).c_str()));
 }
 
 Vector2 Meteorite::getMaxDistance() {

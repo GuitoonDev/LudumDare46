@@ -11,6 +11,12 @@ namespace godot {
 		GODOT_CLASS(PlayerController, Node2D)
 
 		private:
+			const String ANIM_IDLE = "Idle";
+			const String ANIM_MOVE = "Move";
+
+			const String INPUT_RIGHT = "ui_right";
+			const String INPUT_LEFT = "ui_left";
+
 			float m_offsetRadius;
 			float m_speed;
 
