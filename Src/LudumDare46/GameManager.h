@@ -13,8 +13,10 @@
 #include <string>
 #include <iostream>
 #include <Timer.hpp>
+#include <AudioStreamPlayer.hpp>
 #include <iomanip>
 #include <sstream>
+#include <Timer.hpp>
 
 namespace godot {
 
@@ -42,12 +44,15 @@ namespace godot {
 
 		//Game management method
 		void AddPoints(const int p_points);
+		void Flash();
 		void Lose();
 
 	private:
 		int m_score;
 		float m_time;
 		static GameManager* m_manager;
+		Control* m_flashScreen;
+		Timer* m_flashTimer;
 		GameState m_gameState;
 		Label* m_scoreText;
 		Label* m_timeText;
@@ -57,11 +62,18 @@ namespace godot {
 		Label* m_finalTimeText;
 		Control* m_pauseScreen;
 
+		AudioStreamPlayer* m_startGameAudio;
+		AudioStreamPlayer* m_scoreIncrementAudio;
+
+		AudioStreamPlayer* m_musicLoopAudio;
+
 		void StartGame();
 		void SetPauseMode();
 		void ReloadGame();
 		void LeaveGame();
 		void DisplayGameOverScreen(const bool p_display);
 		void DisplayTitleScreen(const bool p_display);
+
+		void StopFlash();
 	};
 }

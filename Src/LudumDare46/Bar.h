@@ -3,6 +3,7 @@
 #include <core/Godot.hpp>
 #include <Area2D.hpp>
 #include <AnimationPlayer.hpp>
+#include <AudioStreamPlayer.hpp>
 #include "GameManager.h"
 
 namespace godot {
@@ -13,6 +14,8 @@ namespace godot {
 			const String ANIM_REFLECT = "Reflect";
 
 			AnimationPlayer* m_animation;
+
+			AudioStreamPlayer* m_meteorParryAudio;
 
 		public:
 			Bar();

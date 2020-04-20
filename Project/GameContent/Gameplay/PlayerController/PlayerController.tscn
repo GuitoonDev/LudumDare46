@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/PlayerController/PlayerController.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/Gameplay/PlayerController/TEX_Astronaut_x128.png" type="Texture" id=2]
 [ext_resource path="res://GameContent/Gameplay/Bar/Bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameContent/Audio/movement_character_loop.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -58,3 +59,7 @@ texture = ExtResource( 2 )
 [node name="Bar (KinematicBody2D)" parent="Player - Sprite" instance=ExtResource( 3 )]
 position = Vector2( 0, -80 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="MovementCharacterLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0

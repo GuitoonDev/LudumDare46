@@ -5,6 +5,7 @@
 #include <Input.hpp>
 #include <AnimationPlayer.hpp>
 #include <Sprite.hpp>
+#include <AudioStreamPlayer.hpp>
 
 namespace godot {
 	class PlayerController : public Node2D {
@@ -26,6 +27,8 @@ namespace godot {
 			AnimationPlayer* m_animation;
 			Input* m_input;
 			Sprite* m_sprite;
+
+			AudioStreamPlayer* m_movementCharacterLoopAudio;
 
 		public:
 			PlayerController();

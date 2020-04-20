@@ -6,7 +6,7 @@ CameraBehaviour* CameraBehaviour::m_manager = nullptr;
 
 // --------------------------------
 
-CameraBehaviour::CameraBehaviour() { }
+CameraBehaviour::CameraBehaviour():m_screenShakeInterval(0) { }
 
 CameraBehaviour::~CameraBehaviour() { }
 
@@ -31,14 +31,30 @@ void CameraBehaviour::_ready() {
 
 void CameraBehaviour::_process(float delta) {
 	if (m_screenShakeTimer < m_screenShakeDuration) {
-		// Random de ses morts
-		srand(time(NULL) * m_screenShakeTimer * 100.0);
-		float _x = (rand() % 150);
+		m_screenShakeInterval++;
 
-		srand(time(NULL) * m_screenShakeTimer * 200.0);
-		float _y = (rand() % 250);
+		if (m_screenShakeInterval % 2 == 0) {
+			if (m_resetPos) {
+				set_position(Vector2(0, 0));
+			}
+			else {
+				// Random de ses morts
+				srand(time(NULL) * 100.0);
+				float _x = (rand() % 150);
 
-		set_position(Vector2(_x, _y).normalized() * m_screenShakeForce);
+				srand(time(NULL) * m_screenShakeTimer * 200.0);
+				float _y = (rand() % 250);
+
+				Vector2 _position(_x, _y);
+				_position.normalize();
+				_position *= m_screenShakeForce;
+
+				set_position(_position);
+			}
+
+			m_resetPos = !m_resetPos;
+			m_screenShakeInterval = 0;
+		}
 
 		m_screenShakeTimer += delta;
 

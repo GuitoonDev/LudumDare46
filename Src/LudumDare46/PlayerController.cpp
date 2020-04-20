@@ -20,6 +20,7 @@ void PlayerController::_init() {
 
 void PlayerController::_ready() {
 	m_animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
+	m_movementCharacterLoopAudio = cast_to<AudioStreamPlayer>(get_node("MovementCharacterLoop"));
 	m_sprite = cast_to<Sprite>(get_node("Player - Sprite"));
 	m_input = Input::get_singleton();
 	m_rotation = get_rotation();
@@ -35,6 +36,7 @@ void PlayerController::_process(float delta) {
 	if (m_input->is_action_just_pressed(INPUT_RIGHT)) {
 		m_movement = 1;
 		m_animation->play(ANIM_MOVE);
+		m_movementCharacterLoopAudio->play();
 		m_sprite->set_flip_h(false);
 	}
 	else if (m_input->is_action_just_released(INPUT_RIGHT) && (m_movement > 0)) {
@@ -45,6 +47,7 @@ void PlayerController::_process(float delta) {
 		else {
 			m_movement = 0;
 			m_animation->play(ANIM_IDLE);
+			m_movementCharacterLoopAudio->stop();
 		}
 	}
 
@@ -52,6 +55,7 @@ void PlayerController::_process(float delta) {
 		m_movement = -1;
 		m_sprite->set_flip_h(true);
 		m_animation->play(ANIM_MOVE);
+		m_movementCharacterLoopAudio->play();
 	}
 	else if (m_input->is_action_just_released(INPUT_LEFT) && (m_movement < 0)) {
 		if (m_input->is_action_pressed(INPUT_RIGHT)) {
@@ -61,6 +65,7 @@ void PlayerController::_process(float delta) {
 		else {
 			m_movement = 0;
 			m_animation->play(ANIM_IDLE);
+			m_movementCharacterLoopAudio->stop();
 		}
 	}
 

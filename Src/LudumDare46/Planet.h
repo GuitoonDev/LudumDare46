@@ -10,6 +10,7 @@
 #include <ShaderMaterial.hpp>
 #include <Shader.hpp>
 #include <AnimationPlayer.hpp>
+#include <AudioStreamPlayer.hpp>
 
 namespace godot {
 	class Planet : public Area2D {
@@ -22,6 +23,8 @@ namespace godot {
 			Timer* timer;
 			Sprite* m_planetSprite;
 			AnimationPlayer* m_animationplayer;
+
+			AudioStreamPlayer* m_planetDamageAudio;
 
 		public:
 			Planet();
