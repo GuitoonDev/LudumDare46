@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://GameContent/Gameplay/Meteorite/Meteorite.png" type="Texture" id=1]
+[ext_resource path="res://GameContent/Gameplay/Meteorite/TEX_Meteorite.png" type="Texture" id=1]
 [ext_resource path="res://GameContent/Gameplay/Meteorite/Meteorite.gdns" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 94.6905
+radius = 60.6741
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.0836653, 0.215139, 0.358566, 0.553785, 0.780877, 0.908367, 1 )
@@ -21,7 +21,7 @@ curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
-emission_sphere_radius = 62.0
+emission_sphere_radius = 36.44
 flag_rotate_y = true
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
@@ -35,7 +35,6 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="Meteorite" type="KinematicBody2D"]
-position = Vector2( 580.304, 506.484 )
 collision_layer = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -44,8 +43,9 @@ __meta__ = {
 speed = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.929412, 0.384314, 0.054902, 1 )
-scale = Vector2( 3, 3 )
+modulate = Color( 1, 0.831373, 0.729412, 1 )
+scale = Vector2( 0.944637, 0.944637 )
+z_index = 1
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -58,4 +58,5 @@ __meta__ = {
 amount = 256
 lifetime = 0.5
 local_coords = false
+draw_order = 1
 process_material = SubResource( 6 )
