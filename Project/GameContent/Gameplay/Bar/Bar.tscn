@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Bar/Bar.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/Gameplay/Bar/TEX_Girder.png" type="Texture" id=2]
+[ext_resource path="res://GameContent/Gameplay/Bar/PS_Impact.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 66.14, 33.582 )
@@ -17,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0.0322725, 0.0588031, -0.00759089, 0.959567, -0.0474927, 0.00505525, 0.0793374, -0.00844487, 0.295389, -0.0964056, 0.0196512, 0.0918227, -0.018717, 0.686887, -0.0443193, -0.00632237, 0.0386968, 0.00552028, 0.5, -0.046468, -0.00164737, 0.0538431, 0.00190884 ),
+"points": PoolRealArray( 0.5, -0.25, 0.0322725, 0.0429063, 0.28943, 0.959567, -0.0474927, 0.00505525, 0.0793374, -0.00844487, 0.295389, -0.0964056, 0.0196512, 0.0918227, -0.018717, 0.686887, -0.0443193, -0.00632237, 0.0386968, 0.00552028, 0.5, -0.046468, -0.00164737, 0.0538431, 0.00190884 ),
 "times": PoolRealArray( 0, 0.11, 0.24, 0.38, 0.5 )
 }
 tracks/1/type = "bezier"
@@ -27,8 +28,20 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0.5, -0.25, 0.0178877, 0.0507321, -0.00362992, 0.145286, -0.0610973, -0.00609528, 0.0875622, 0.00873551, 0.774242, -0.0462958, -0.0159986, 0.0505563, 0.017471, 0.267583, -0.0802521, -0.00775095, 0.104683, 0.0101106, 0.5, -0.02802, -0.00534374, 0.0469251, 0.00894916 ),
+"points": PoolRealArray( 0.5, -0.25, 0.0178877, 0.035551, -0.260906, 0.145286, -0.0610973, -0.00609528, 0.0875622, 0.00873551, 0.774242, -0.0462958, -0.0159986, 0.0505563, 0.017471, 0.267583, -0.0802521, -0.00775095, 0.104683, 0.0101106, 0.5, -0.02802, -0.00534374, 0.0469251, 0.00894916 ),
 "times": PoolRealArray( 0, 0.09, 0.24, 0.39, 0.5 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PS_Impact:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Bar (Area2D)" type="Area2D"]
@@ -53,3 +66,7 @@ collision_mask = 2
 position = Vector2( 0.527039, -18.1829 )
 scale = Vector2( 0.9, 0.85 )
 shape = SubResource( 1 )
+
+[node name="PS_Impact" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 0 )
+emission_rect_extents = Vector2( 16, 0.2 )
