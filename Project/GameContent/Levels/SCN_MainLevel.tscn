@@ -11,10 +11,16 @@
 [node name="GameManager" parent="." instance=ExtResource( 1 )]
 
 [node name="Planet" parent="." instance=ExtResource( 2 )]
+radius = 2.0
+
+[node name="PlayerController" parent="Planet" index="2"]
+scale = Vector2( 0.6, 0.6 )
+offsetRadius = 60.0
 
 [node name="MeteoriteSpawner" parent="." instance=ExtResource( 4 )]
-meteoriteInterval = 0.0
-instanceTimeActivation = PoolIntArray(  )
+screenOffset = 100.0
+meteoriteInterval = 3.0
+instanceTimeActivation = PoolIntArray( 0, 10, 30, 60, 100, 150 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -22,4 +28,7 @@ z_index = -540
 texture = ExtResource( 3 )
 
 [node name="Camera2D2" parent="." instance=ExtResource( 5 )]
-"Screen shake Duration" = 0.0
+"Screen shake Duration" = 0.15
+"Screen shake Force" = 750
+
+[editable path="Planet"]

@@ -17,6 +17,7 @@
 #include <iomanip>
 #include <sstream>
 #include <CPUParticles.hpp>
+#include <AnimationPlayer.hpp>
 
 namespace godot {
 

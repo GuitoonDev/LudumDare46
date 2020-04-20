@@ -111,6 +111,8 @@ void Planet::takeDamage(Node* body) {
 		_manager->screenShake();
 	}
 
+	GameManager::GetGameManager()->DamageFlash();
+
 	m_planetDamageAudio->play();
 }
 

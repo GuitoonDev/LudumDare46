@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 0 ), Vector2( 1.25, 1.5 ), Vector2( 1, 0 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "DamageFlash"
 length = 0.25
 step = 0.01
@@ -51,10 +51,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.67451, 0.67451, 0.67451, 0 ), Color( 0.67451, 0.67451, 0.67451, 1 ), Color( 0.67451, 0.67451, 0.67451, 1 ), Color( 0.67451, 0.67451, 0.67451, 0 ) ]
+"values": [ Color( 0.67451, 0.67451, 0.67451, 0 ), Color( 0.67451, 0.67451, 0.67451, 0.588235 ), Color( 0.67451, 0.67451, 0.67451, 0.588235 ), Color( 0.67451, 0.67451, 0.67451, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "ReflectFlash"
 length = 0.1
 tracks/0/type = "value"
@@ -70,30 +70,30 @@ tracks/0/keys = {
 "values": [ Color( 0.67451, 0.67451, 0.67451, 0 ), Color( 0.67451, 0.67451, 0.67451, 0.133333 ), Color( 0.67451, 0.67451, 0.67451, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 80
 outline_size = 3
 outline_color = Color( 0.509804, 0.360784, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 26
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=6]
 font_path = "res://GameContent/UI/FredokaOne-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 70
 outline_size = 5
 outline_color = Color( 0.788235, 0.788235, 0.788235, 1 )
-font_data = SubResource( 4 )
+font_data = SubResource( 6 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 24
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 65
 outline_size = 3
 outline_color = Color( 0.411765, 0.247059, 0.164706, 1 )
@@ -190,8 +190,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/Flash"]
-anims/DamageFlash = SubResource( 8 )
-anims/ReflectFlash = SubResource( 9 )
+anims/DamageFlash = SubResource( 2 )
+anims/ReflectFlash = SubResource( 3 )
 
 [node name="FlashScreen" type="ColorRect" parent="UI/HUD/Flash"]
 margin_left = -75.3168
@@ -204,7 +204,6 @@ __meta__ = {
 }
 
 [node name="Menu" type="Control" parent="UI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -232,14 +231,16 @@ margin_right = 236.0
 margin_bottom = 48.0
 
 [node name="Title" type="Label" parent="UI/Menu/CenterContainer/TitlePanel"]
-margin_left = -236.0
-margin_top = -120.0
-margin_right = 237.0
-margin_bottom = -23.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -194.5
+margin_top = -257.138
+margin_right = 194.5
+margin_bottom = -160.138
 rect_pivot_offset = Vector2( 206.026, 61.6131 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0.858824, 0.533333, 1 )
-text = "Le jeu rigolo"
+text = "Sheltered"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -247,11 +248,11 @@ __meta__ = {
 [node name="StartButton" type="Label" parent="UI/Menu/CenterContainer/TitlePanel"]
 material = ExtResource( 4 )
 margin_left = -126.5
-margin_top = 20.0
+margin_top = 107.661
 margin_right = 126.5
-margin_bottom = 53.0
+margin_bottom = 140.661
 rect_pivot_offset = Vector2( -468.07, -164.448 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Press enter to start"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -282,7 +283,7 @@ margin_left = -190.5
 margin_top = -125.0
 margin_right = 190.5
 margin_bottom = -38.9999
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.721569, 0.576471, 0.466667, 1 )
 custom_colors/font_outline_modulate = Color( 0.341176, 0.278431, 0.278431, 1 )
 text = "Game Over"
@@ -331,7 +332,7 @@ margin_left = -144.002
 margin_top = 139.373
 margin_right = 157.998
 margin_bottom = 171.373
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.913725, 1, 0.768627, 1 )
 custom_colors/font_outline_modulate = Color( 0.121569, 0.145098, 0.0745098, 1 )
 text = "Press enter to play again"
@@ -397,7 +398,7 @@ margin_left = -94.0
 margin_top = -40.0
 margin_right = 94.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0.92549, 0.67451, 1 )
 text = "Pause"
 
