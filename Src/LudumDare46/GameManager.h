@@ -15,6 +15,7 @@
 #include <Timer.hpp>
 #include <iomanip>
 #include <sstream>
+#include <Timer.hpp>
 
 namespace godot {
 
@@ -42,12 +43,15 @@ namespace godot {
 
 		//Game management method
 		void AddPoints(const int p_points);
+		void Flash();
 		void Lose();
 
 	private:
 		int m_score;
 		float m_time;
 		static GameManager* m_manager;
+		Control* m_flashScreen;
+		Timer* m_flashTimer;
 		GameState m_gameState;
 		Label* m_scoreText;
 		Label* m_timeText;
@@ -63,5 +67,7 @@ namespace godot {
 		void LeaveGame();
 		void DisplayGameOverScreen(const bool p_display);
 		void DisplayTitleScreen(const bool p_display);
+
+		void StopFlash();
 	};
 }
