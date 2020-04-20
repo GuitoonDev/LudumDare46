@@ -13,8 +13,8 @@
 [node name="Planet" parent="." instance=ExtResource( 2 )]
 
 [node name="MeteoriteSpawner" parent="." instance=ExtResource( 4 )]
-screenOffset = 100.0
-instanceTimeActivation = PoolIntArray( 0, 5, 15, 30, 60 )
+meteoriteInterval = 0.0
+instanceTimeActivation = PoolIntArray(  )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -22,5 +22,4 @@ z_index = -540
 texture = ExtResource( 3 )
 
 [node name="Camera2D2" parent="." instance=ExtResource( 5 )]
-"Screen shake Duration" = 0.1
-"Screen shake Force" = 250
+"Screen shake Duration" = 0.0

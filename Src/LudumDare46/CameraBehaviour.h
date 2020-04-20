@@ -14,6 +14,8 @@ namespace godot {
 		private:
 			static CameraBehaviour* m_manager;
 
+			bool m_resetPos;
+			int m_screenShakeInterval;
 			float m_screenShakeDuration;
 			int m_screenShakeForce;
 			float m_screenShakeTimer;
