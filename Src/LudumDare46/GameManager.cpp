@@ -9,6 +9,7 @@ GameManager* GameManager::m_manager = nullptr;
 
 #pragma region Construction
 GameManager::GameManager() :
+m_time(0),
 m_score(0), 
 m_gameState(GameState::Idle),
 m_scoreText(nullptr), 
@@ -33,6 +34,7 @@ void GameManager::_register_methods()
 {
 	register_method("_input", &GameManager::_input);
 	register_method("_ready", &GameManager::_ready);
+	register_method("_process", &GameManager::_process);
 	register_signal<GameManager>("game_started", "owner", GODOT_VARIANT_TYPE_OBJECT);
 	register_signal<GameManager>("game_over", "owner", GODOT_VARIANT_TYPE_OBJECT);
 }
@@ -40,13 +42,16 @@ void GameManager::_register_methods()
 void GameManager::_ready()
 {
 	m_scoreText = cast_to<Label>(get_node("UI/HUD/Score/ScoreDisplay"));
+	m_timeText = cast_to<Label>(get_node("UI/HUD/Time/TimeDisplay"));
 	m_titleScreen = cast_to<Control>(get_node("UI/Menu"));
 	m_defeatScreen = cast_to<Control>(get_node("UI/GameOverScreen"));
 	m_finalScoreText = cast_to<Label>(get_node("UI/GameOverScreen/Score_Text"));
+	m_finalTimeText = cast_to<Label>(get_node("UI/GameOverScreen/Time_Text"));
 	m_pauseScreen = cast_to<Control>(get_node("UI/PauseMenu"));
 
 	//Init score text
 	m_scoreText->set_text(to_string(m_score).c_str());
+	m_timeText->set_text("0");
 
 	//Set idle game state
 	m_gameState = GameState::Idle;
@@ -99,6 +104,17 @@ void GameManager::_init() {
 	//Set singleton
 	m_manager = this;
 }
+
+void GameManager::_process(float delta) {
+	// Increase timer
+	if (m_gameState == GameState::Playing) {
+		m_time += delta;
+		std::stringstream _stream;
+		_stream << std::fixed << std::setprecision(2) << m_time;
+
+		m_timeText->set_text(_stream.str().c_str());
+	}
+}
 #pragma endregion
 
 #pragma region Game Management
@@ -141,6 +157,10 @@ void GameManager::DisplayGameOverScreen(const bool p_display)
 	if (p_display) {
 		m_defeatScreen->show();
 		m_finalScoreText->set_text(to_string(m_score).c_str());
+
+		std::stringstream _stream;
+		_stream << std::fixed << std::setprecision(2) << m_time;
+		m_finalTimeText->set_text(_stream.str().c_str());
 
 	} else {
 		m_defeatScreen->hide();
