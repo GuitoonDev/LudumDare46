@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet_Eyes.png" type="Texture" id=5]
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet_Eyebrows.png" type="Texture" id=6]
 [ext_resource path="res://GameContent/Gameplay/Planet/TEX_Planet__Mouth.png" type="Texture" id=7]
+[ext_resource path="res://GameContent/Audio/planet_damage.wav" type="AudioStream" id=8]
+[ext_resource path="res://GenericContent/Textures/Particles/TEX_Dust.png" type="Texture" id=9]
+[ext_resource path="res://GenericContent/Textures/Particles/Planet Fragment.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -123,6 +126,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ 4.38771, 24.0, 4.38771 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("FX_Explosion/PS_RockShard:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 4.0
@@ -208,6 +223,28 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 )
 }
 
+[sub_resource type="ShaderMaterial" id=4]
+
+[sub_resource type="Curve" id=5]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 360 ), 0.0, -463.489, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, -1.44398, 0, 0, Vector2( 0.164122, 0.517045 ), -0.752153, -0.752153, 0, 0, Vector2( 1, 0 ), -1.33596, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.34728, 0.669456 )
+colors = PoolColorArray( 1, 0.985752, 0.964844, 1, 1, 0.803696, 0.515625, 1, 0.361816, 0.154055, 0.154055, 1 )
+
+[sub_resource type="Curve" id=8]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 360 ), 0.0, -558.343, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.80916, 0.602273 ), -0.873333, -0.873333, 0, 0, Vector2( 1, 0 ), -3.59257, 0.0, 0, 0 ]
+
 [node name="Planet (Area2D)" type="Area2D"]
 collision_mask = 2
 script = ExtResource( 1 )
@@ -239,7 +276,7 @@ texture = ExtResource( 5 )
 
 [node name="Mouth" type="Sprite" parent="Planet"]
 position = Vector2( 0, 10.491 )
-scale = Vector2( 0.205, 0.161 )
+scale = Vector2( 0.204947, 0.161069 )
 texture = ExtResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -264,3 +301,45 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hurt = SubResource( 2 )
 anims/Idle = SubResource( 3 )
+
+[node name="PlanetDamageAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
+
+[node name="FX_Explosion" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 9 )
+emission_shape = 1
+emission_sphere_radius = 16.99
+gravity = Vector2( 0, 0 )
+angle = 720.0
+angle_random = 1.0
+angle_curve = SubResource( 5 )
+scale_amount = 0.2
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 6 )
+color_ramp = SubResource( 7 )
+
+[node name="PS_RockShard" type="CPUParticles2D" parent="FX_Explosion"]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 10 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 109.15
+initial_velocity_random = 0.67
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+angular_velocity_curve = SubResource( 8 )
+damping = 100.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 0.03
+scale_amount_random = 0.2
+scale_amount_curve = SubResource( 9 )
