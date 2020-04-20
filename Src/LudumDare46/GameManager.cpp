@@ -35,15 +35,14 @@ void GameManager::_register_methods()
 	register_method("_input", &GameManager::_input);
 	register_method("_ready", &GameManager::_ready);
 	register_method("_process", &GameManager::_process);
-	register_method("StopFlash", &GameManager::StopFlash);
 	register_signal<GameManager>("game_started", "owner", GODOT_VARIANT_TYPE_OBJECT);
 	register_signal<GameManager>("game_over", "owner", GODOT_VARIANT_TYPE_OBJECT);
 }
 
 void GameManager::_ready()
 {
-	m_flashTimer = cast_to<Timer>(get_node("UI/HUD/Flash/FlashTimer"));
-	m_flashScreen = cast_to<Control>(get_node("UI/HUD/Flash/FlashScreen"));
+	m_scoreAnimation = cast_to<AnimationPlayer>(get_node("UI/HUD/Score/AnimationPlayer"));
+	m_flashAnimation = cast_to<AnimationPlayer>(get_node("UI/HUD/Flash/AnimationPlayer"));
 	m_scoreText = cast_to<Label>(get_node("UI/HUD/Score/ScoreDisplay"));
 	m_timeText = cast_to<Label>(get_node("UI/HUD/Time/TimeDisplay"));
 	m_titleScreen = cast_to<Control>(get_node("UI/Menu"));
@@ -56,8 +55,6 @@ void GameManager::_ready()
 	m_scoreIncrementAudio = cast_to<AudioStreamPlayer>(get_node("ScoreIncrement_Audio"));
 
 	m_musicLoopAudio = cast_to<AudioStreamPlayer>(get_node("MusicLoop_Audio"));
-
-	m_flashTimer->connect("timeout", this, "StopFlash");
 
 	//Init score text
 	m_scoreText->set_text(to_string(m_score).c_str());
@@ -88,10 +85,6 @@ void GameManager::_input(InputEvent* p_input)
 	case GameState::Playing:
 		if (p_input->is_action_pressed("ui_cancel")) {
 			SetPauseMode();
-		}
-
-		if (p_input->is_action_pressed("ui_accept")) {
-			Lose();
 		}
 		break;
 
@@ -133,12 +126,20 @@ void GameManager::AddPoints(const int p_points)
 	m_score += p_points;
 	m_scoreText->set_text(to_string(m_score).c_str());
 
+	m_scoreAnimation->stop();
+	m_scoreAnimation->play(ANIM_SCORE);
+
 	m_scoreIncrementAudio->play();
 }
 
-void GameManager::Flash() {
-	m_flashTimer->start();
-	m_flashScreen->show();
+void GameManager::DamageFlash() {
+	m_flashAnimation->stop();
+	m_flashAnimation->play(ANIM_DAMAGE_FLASH);
+}
+
+void GameManager::ReflectFlash() {
+	m_flashAnimation->stop();
+	m_flashAnimation->play(ANIM_REFLECT_FLASH);
 }
 
 void GameManager::StartGame()
@@ -205,10 +206,6 @@ void GameManager::DisplayTitleScreen(const bool p_display)
 	} else {
 		m_titleScreen->hide();
 	}
-}
-
-void GameManager::StopFlash() {
-	m_flashScreen->hide();
 }
 
 void GameManager::LeaveGame()
