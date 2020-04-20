@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Bar/Bar.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/Gameplay/Bar/TEX_Girder.png" type="Texture" id=2]
+[ext_resource path="res://GameContent/Audio/meteor_parry.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 66.14, 33.582 )
@@ -53,3 +54,7 @@ collision_mask = 2
 position = Vector2( 0.527039, -18.1829 )
 scale = Vector2( 0.9, 0.85 )
 shape = SubResource( 1 )
+
+[node name="MeteorParryAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
