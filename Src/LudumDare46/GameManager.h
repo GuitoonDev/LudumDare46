@@ -16,7 +16,7 @@
 #include <AudioStreamPlayer.hpp>
 #include <iomanip>
 #include <sstream>
-#include <Timer.hpp>
+#include <AnimationPlayer.hpp>
 
 namespace godot {
 
@@ -44,15 +44,20 @@ namespace godot {
 
 		//Game management method
 		void AddPoints(const int p_points);
-		void Flash();
+		void DamageFlash();
+		void ReflectFlash();
 		void Lose();
 
 	private:
+		const String ANIM_SCORE = "Score";
+		const String ANIM_DAMAGE_FLASH = "DamageFlash";
+		const String ANIM_REFLECT_FLASH = "ReflectFlash";
+
 		int m_score;
 		float m_time;
 		static GameManager* m_manager;
-		Control* m_flashScreen;
-		Timer* m_flashTimer;
+		AnimationPlayer* m_scoreAnimation;
+		AnimationPlayer* m_flashAnimation;
 		GameState m_gameState;
 		Label* m_scoreText;
 		Label* m_timeText;
@@ -73,7 +78,5 @@ namespace godot {
 		void LeaveGame();
 		void DisplayGameOverScreen(const bool p_display);
 		void DisplayTitleScreen(const bool p_display);
-
-		void StopFlash();
 	};
 }

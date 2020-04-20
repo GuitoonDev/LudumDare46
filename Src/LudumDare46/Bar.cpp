@@ -27,6 +27,7 @@ void Bar::_ready() {
 
 void Bar::sendBack(Node * body) {
 	GameManager::GetGameManager()->AddPoints(50);
+	GameManager::GetGameManager()->ReflectFlash();
 
 	Godot::print("Reflect");
 
