@@ -8,7 +8,7 @@ Meteorite::Meteorite() :m_isActive(false)
 
 Meteorite::~Meteorite()
 {
-	Godot::print("~Meteorite");
+	//Godot::print("~Meteorite");
 }
 
 void Meteorite::_register_methods()
@@ -23,21 +23,17 @@ void Meteorite::_register_methods()
 
 void Meteorite::_init()
 {
-	Godot::print(String("Meteorite::_init"));
-
-	//s_instanceCount++;
+	//Godot::print(String("Meteorite::_init"));
 }
 
 void Meteorite::_ready() {
-	Godot::print(String(get_name() + " _ready | " + String(std::to_string(m_isActive).c_str())));
+	//Godot::print(String(get_name() + " _ready | " + String(std::to_string(m_isActive).c_str())));
 
 	//srand(time(NULL));
 
 	//float x_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
 	//float y_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
 	//set_position(Vector2(x_position, y_position));
-
-	m_velocity = -get_position().normalized() * 100;
 }
 
 void Meteorite::_physics_process(float delta)
@@ -45,8 +41,6 @@ void Meteorite::_physics_process(float delta)
 	if (!getIsActive()) {
 		return;
 	}
-
-	Godot::print("Move");
 
 	Ref<KinematicCollision2D> collision = move_and_collide(m_velocity * m_speed * delta);
 
@@ -70,5 +64,17 @@ bool Meteorite::getIsActive()
 void Meteorite::setIsActive(bool p_isActive)
 {
 	m_isActive = p_isActive;
-	Godot::print(get_name() + " | " + String(std::to_string(m_isActive).c_str()));
+	//Godot::print(get_name() + " | " + String(std::to_string(m_isActive).c_str()));
+}
+
+Vector2 Meteorite::getMaxDistance() {
+	return m_maxDistance;
+}
+
+
+void Meteorite::pool() {
+	m_isActive = false;
+
+	m_maxDistance = -get_position();
+	m_velocity = m_maxDistance.normalized() * 100;
 }
