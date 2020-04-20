@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameContent/Gameplay/Camera/CameraBehaviour.gdns" type="Script" id=1]
+
+[node name="Camera2D" type="Camera2D"]
+current = true
+script = ExtResource( 1 )
+"Screen shake Duration" = 1.0
+"Screen shake Force" = 25.0

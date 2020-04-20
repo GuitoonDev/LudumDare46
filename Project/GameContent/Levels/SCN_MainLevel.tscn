@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/GameManager/GameManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameContent/Gameplay/Planet/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GameContent/Environment/TEX_Background.png" type="Texture" id=3]
 [ext_resource path="res://GameContent/Gameplay/MeteoriteSpawner/MeteoriteSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameContent/Gameplay/Camera/CameraBehaviour.tscn" type="PackedScene" id=5]
 
 [node name="Root" type="Node2D"]
 
@@ -12,8 +13,12 @@
 [node name="Camera2D" parent="." instance=ExtResource( 2 )]
 
 [node name="MeteoriteSpawner" parent="." instance=ExtResource( 4 )]
+screenOffset = 100.0
+instanceTimeActivation = PoolIntArray( 0, 5, 15, 30, 60 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 z_index = -540
 texture = ExtResource( 3 )
+
+[node name="Camera2D2" parent="." instance=ExtResource( 5 )]
