@@ -13,6 +13,7 @@
 #include <string>
 #include <iostream>
 #include <Timer.hpp>
+#include <AudioStreamPlayer.hpp>
 #include <iomanip>
 #include <sstream>
 #include <Timer.hpp>
@@ -60,6 +61,11 @@ namespace godot {
 		Label* m_finalScoreText;
 		Label* m_finalTimeText;
 		Control* m_pauseScreen;
+
+		AudioStreamPlayer* m_startGameAudio;
+		AudioStreamPlayer* m_scoreIncrementAudio;
+
+		AudioStreamPlayer* m_musicLoopAudio;
 
 		void StartGame();
 		void SetPauseMode();

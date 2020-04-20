@@ -34,6 +34,8 @@ void Meteorite::_ready() {
 	//float x_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
 	//float y_position = (float(rand()) / float(RAND_MAX)) * 20 - 10;
 	//set_position(Vector2(x_position, y_position));
+
+	m_meteorExplodeAudio = cast_to<AudioStreamPlayer>(get_node("MeteorExplode"));
 }
 
 void Meteorite::_physics_process(float delta)
@@ -58,6 +60,8 @@ void Meteorite::_physics_process(float delta)
 
 void Meteorite::collide() {
 	m_isDeactivating = true;
+
+	m_meteorExplodeAudio->play();
 }
 
 bool Meteorite::getIsActive() {
