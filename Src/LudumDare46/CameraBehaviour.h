@@ -2,6 +2,10 @@
 
 #include <core/Godot.hpp>
 #include <Camera2D.hpp>
+#include <stdlib.h>
+#include <time.h>
+
+#include <string>
 
 namespace godot {
 	class CameraBehaviour : public Camera2D {
@@ -11,7 +15,7 @@ namespace godot {
 			static CameraBehaviour* m_manager;
 
 			float m_screenShakeDuration;
-			float m_screenShakeForce;
+			int m_screenShakeForce;
 			float m_screenShakeTimer;
 
 		public:

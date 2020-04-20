@@ -24,12 +24,12 @@ one_shot = true
 [node name="PlayerController" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2( 0.9, 0.9 )
 collision_mask = 2
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Collider" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 1 )
