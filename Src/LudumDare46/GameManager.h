@@ -13,7 +13,8 @@
 #include <string>
 #include <iostream>
 #include <Timer.hpp>
-
+#include <iomanip>
+#include <sstream>
 
 namespace godot {
 
@@ -37,6 +38,7 @@ namespace godot {
 		void _input(InputEvent* p_input);
 		void _ready();
 		void _init();
+		void _process(float delta);
 
 		//Game management method
 		void AddPoints(const int p_points);
@@ -44,12 +46,15 @@ namespace godot {
 
 	private:
 		int m_score;
+		float m_time;
 		static GameManager* m_manager;
 		GameState m_gameState;
 		Label* m_scoreText;
+		Label* m_timeText;
 		Control* m_titleScreen;
 		Control* m_defeatScreen;
 		Label* m_finalScoreText;
+		Label* m_finalTimeText;
 		Control* m_pauseScreen;
 
 		void StartGame();

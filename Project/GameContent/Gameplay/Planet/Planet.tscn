@@ -213,7 +213,7 @@ tracks/7/keys = {
 collision_mask = 2
 script = ExtResource( 1 )
 health = 3
-radius = 2.0
+radius = 1.0
 
 [node name="Planet" type="Sprite" parent="."]
 material = ExtResource( 4 )

@@ -17,6 +17,7 @@ class Meteorite : public KinematicBody2D
 
 private:
 	bool m_isActive;
+	bool m_isDeactivating;
 	float m_speed;
 
 	Vector2 m_velocity;

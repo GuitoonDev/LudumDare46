@@ -5,3 +5,5 @@
 [node name="GameScene" type="Node2D"]
 
 [node name="MeteoriteSpawner" parent="." instance=ExtResource( 1 )]
+meteoriteInterval = 0.0
+instanceTimeActivation = PoolIntArray(  )
