@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameContent/Gameplay/Bar/Bar.gdns" type="Script" id=1]
 [ext_resource path="res://GameContent/Gameplay/Bar/TEX_Girder.png" type="Texture" id=2]
 [ext_resource path="res://GameContent/Audio/meteor_parry.wav" type="AudioStream" id=3]
+[ext_resource path="res://GameContent/Gameplay/Bar/PS_Impact.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 66.14, 33.582 )
@@ -31,6 +32,18 @@ tracks/1/keys = {
 "points": PoolRealArray( 0.5, -0.25, 0.0178877, 0.0507321, -0.00362992, 0.145286, -0.0610973, -0.00609528, 0.0875622, 0.00873551, 0.774242, -0.0462958, -0.0159986, 0.0505563, 0.017471, 0.267583, -0.0802521, -0.00775095, 0.104683, 0.0101106, 0.5, -0.02802, -0.00534374, 0.0469251, 0.00894916 ),
 "times": PoolRealArray( 0, 0.09, 0.24, 0.39, 0.5 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("PS_Impact:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Bar (Area2D)" type="Area2D"]
 collision_mask = 2
@@ -58,3 +71,6 @@ shape = SubResource( 1 )
 [node name="MeteorParryAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.0
+
+[node name="PS_Impact" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 0 )
