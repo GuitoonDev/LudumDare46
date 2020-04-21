@@ -46,8 +46,8 @@ _global_script_class_icons={
 
 config/name="Ludum Dare 46"
 run/main_scene="res://GameContent/Levels/SCN_MainLevel.tscn"
-config/icon="res://GameContent/Icon/TEX_GameIcon.png"
-config/windows_native_icon="res://GameContent/Icon/TEX_GameIcon.ico"
+config/icon="res://GameContent/Icon/Shelter.png"
+config/windows_native_icon="res://GameContent/Icon/Shelter.ico"
 
 [display]
 
