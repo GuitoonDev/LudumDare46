@@ -1,0 +1,11 @@
+[gd_resource type="NativeScript" load_steps=2 format=2]
+
+[sub_resource type="GDNativeLibrary" id=1]
+entry/Windows.64 = "res://Libraries/LibLudumDare46-x64-Debug.dll"
+dependency/Windows.64 = [  ]
+
+[resource]
+resource_name = "GameManager"
+class_name = "GameManager"
+library = SubResource( 1 )
+script_class_name = "GameManager"

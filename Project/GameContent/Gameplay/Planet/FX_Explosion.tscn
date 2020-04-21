@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GenericContent/Textures/Particles/TEX_Dust.png" type="Texture" id=1]
+[ext_resource path="res://GenericContent/Textures/Particles/Planet Fragment.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="Curve" id=2]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 360 ), 0.0, -463.489, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, -1.44398, 0, 0, Vector2( 0.164122, 0.517045 ), -0.752153, -0.752153, 0, 0, Vector2( 1, 0 ), -1.33596, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.34728, 0.669456 )
+colors = PoolColorArray( 1, 0.985752, 0.964844, 1, 1, 0.803696, 0.515625, 1, 0.361816, 0.154055, 0.154055, 1 )
+
+[sub_resource type="Curve" id=5]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 360 ), 0.0, -558.343, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.80916, 0.602273 ), -0.873333, -0.873333, 0, 0, Vector2( 1, 0 ), -3.59257, 0.0, 0, 0 ]
+
+[node name="FX_Explosion" type="CPUParticles2D"]
+material = SubResource( 1 )
+emitting = false
+amount = 15
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 16.99
+gravity = Vector2( 0, 0 )
+angle = 720.0
+angle_random = 1.0
+angle_curve = SubResource( 2 )
+scale_amount = 0.2
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[node name="PS_RockShard" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 2 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 109.15
+initial_velocity_random = 0.67
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+angular_velocity_curve = SubResource( 5 )
+damping = 100.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 0.03
+scale_amount_random = 0.2
+scale_amount_curve = SubResource( 6 )

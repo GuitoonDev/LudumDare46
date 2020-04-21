@@ -1,0 +1,415 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://GameContent/Gameplay/GameManager/GameManager.gdns" type="Script" id=1]
+[ext_resource path="res://GameContent/UI/FredokaOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://GameContent/UI/DF_UIFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://GameContent/UI/Materials/MAT_FlashingUI.material" type="Material" id=4]
+[ext_resource path="res://GameContent/Audio/scoree_increment.wav" type="AudioStream" id=5]
+[ext_resource path="res://GameContent/Audio/start_game.wav" type="AudioStream" id=6]
+[ext_resource path="res://GameContent/Audio/Music/tes_music_meteor.ogg" type="AudioStream" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Score"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScoreDisplay:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 94.2056, 0 ), Vector2( 94.206, 20 ), Vector2( 94.206, -15 ), Vector2( 94.206, 20 ), Vector2( 94.2056, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScoreDisplay:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 0 ), Vector2( 1.25, 1.5 ), Vector2( 1, 0 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DamageFlash"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlashScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.67451, 0.67451, 0.67451, 0 ), Color( 0.67451, 0.67451, 0.67451, 0.588235 ), Color( 0.67451, 0.67451, 0.67451, 0.588235 ), Color( 0.67451, 0.67451, 0.67451, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ReflectFlash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FlashScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.67451, 0.67451, 0.67451, 0 ), Color( 0.67451, 0.67451, 0.67451, 0.133333 ), Color( 0.67451, 0.67451, 0.67451, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 80
+outline_size = 3
+outline_color = Color( 0.509804, 0.360784, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 26
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://GameContent/UI/FredokaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+outline_size = 5
+outline_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 65
+outline_size = 3
+outline_color = Color( 0.411765, 0.247059, 0.164706, 1 )
+font_data = ExtResource( 2 )
+
+[node name="GameManager" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -348.0
+margin_top = -350.0
+margin_right = -348.0
+margin_bottom = -350.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Control" parent="UI/HUD"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 55.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/Score"]
+anims/Score = SubResource( 1 )
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD/Score"]
+margin_right = 97.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 466.631, 225.944 )
+custom_fonts/font = ExtResource( 3 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreDisplay" type="Label" parent="UI/HUD/Score"]
+margin_left = 94.2056
+margin_right = 163.206
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 3 )
+text = "XXX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Control" parent="UI/HUD"]
+margin_left = 520.0
+margin_top = 15.0
+margin_right = 560.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="UI/HUD/Time"]
+margin_right = 97.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 466.631, 225.944 )
+custom_fonts/font = ExtResource( 3 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeDisplay" type="Label" parent="UI/HUD/Time"]
+margin_left = 94.2056
+margin_right = 191.206
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 3 )
+text = "XXX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flash" type="Control" parent="UI/HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HUD/Flash"]
+anims/DamageFlash = SubResource( 2 )
+anims/ReflectFlash = SubResource( 3 )
+
+[node name="FlashScreen" type="ColorRect" parent="UI/HUD/Flash"]
+margin_left = -75.3168
+margin_top = -33.4741
+margin_right = 924.683
+margin_bottom = 966.526
+color = Color( 0.67451, 0.67451, 0.67451, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.5
+margin_top = -48.5
+margin_right = 236.5
+margin_bottom = 48.5
+rect_pivot_offset = Vector2( 240, 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePanel" type="Control" parent="UI/Menu/CenterContainer"]
+margin_left = 236.0
+margin_top = 48.0
+margin_right = 236.0
+margin_bottom = 48.0
+
+[node name="Title" type="Label" parent="UI/Menu/CenterContainer/TitlePanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -194.5
+margin_top = -257.138
+margin_right = 194.5
+margin_bottom = -160.138
+rect_pivot_offset = Vector2( 206.026, 61.6131 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.858824, 0.533333, 1 )
+text = "Sheltered"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Label" parent="UI/Menu/CenterContainer/TitlePanel"]
+material = ExtResource( 4 )
+margin_left = -126.5
+margin_top = 107.661
+margin_right = 126.5
+margin_bottom = 140.661
+rect_pivot_offset = Vector2( -468.07, -164.448 )
+custom_fonts/font = SubResource( 5 )
+text = "Press enter to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverScreen" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="UI/GameOverScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.411765, 0.411765, 0.411765, 0.709804 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -190.5
+margin_top = -125.0
+margin_right = 190.5
+margin_bottom = -38.9999
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.721569, 0.576471, 0.466667, 1 )
+custom_colors/font_outline_modulate = Color( 0.341176, 0.278431, 0.278431, 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score_Label" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.415
+margin_top = -12.4123
+margin_right = -20.4149
+margin_bottom = 68.5877
+custom_fonts/font = ExtResource( 3 )
+text = "Score
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time_Label" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.415
+margin_top = 47.5877
+margin_right = -20.4151
+margin_bottom = 128.588
+custom_fonts/font = ExtResource( 3 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue_Message" type="Label" parent="UI/GameOverScreen"]
+material = ExtResource( 4 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.002
+margin_top = 139.373
+margin_right = 157.998
+margin_bottom = 171.373
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.913725, 1, 0.768627, 1 )
+custom_colors/font_outline_modulate = Color( 0.121569, 0.145098, 0.0745098, 1 )
+text = "Press enter to play again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score_Text" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.39117
+margin_top = -12.4123
+margin_right = 123.391
+margin_bottom = 68.5877
+custom_fonts/font = ExtResource( 3 )
+text = "XXXXX
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time_Text" type="Label" parent="UI/GameOverScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.39105
+margin_top = 47.5877
+margin_right = 123.391
+margin_bottom = 128.588
+custom_fonts/font = ExtResource( 3 )
+text = "XXXXX
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.388235, 0.388235, 0.388235, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause_Label" type="Label" parent="UI/PauseMenu"]
+material = ExtResource( 4 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = -40.0
+margin_right = 94.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 0.92549, 0.67451, 1 )
+text = "Pause"
+
+[node name="StartGame_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.0
+
+[node name="ScoreIncrement_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+
+[node name="MusicLoop_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0

@@ -8,12 +8,49 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Bar",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/Bar/Bar.gdns"
+}, {
+"base": "Camera2D",
+"class": "CameraBehaviour",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/Camera/CameraBehaviour.gdns"
+}, {
+"base": "Node",
+"class": "GameManager",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/GameManager/GameManager.gdns"
+}, {
+"base": "Area2D",
+"class": "Planet",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/Planet/Planet.gdns"
+}, {
+"base": "Node2D",
+"class": "PlayerController",
+"language": "NativeScript",
+"path": "res://GameContent/Gameplay/PlayerController/PlayerController.gdns"
+} ]
 _global_script_class_icons={
-
+"Bar": "",
+"CameraBehaviour": "",
+"GameManager": "",
+"Planet": "",
+"PlayerController": ""
 }
 
 [application]
 
-config/name="Ludum Dare 46"
-config/icon="res://icon.png"
+config/name="Sheltered"
+run/main_scene="res://GameContent/Levels/SCN_MainLevel.tscn"
+config/icon="res://GameContent/Icon/Shelter.png"
+config/windows_native_icon="res://GameContent/Icon/Shelter.ico"
+
+[display]
+
+window/size/width=700
+window/size/height=700
+window/size/resizable=false

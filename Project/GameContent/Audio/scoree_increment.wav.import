@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/scoree_increment.wav-8c327a8d87371949ca426f36e209344f.sample"
+
+[deps]
+
+source_file="res://GameContent/Audio/scoree_increment.wav"
+dest_files=[ "res://.import/scoree_increment.wav-8c327a8d87371949ca426f36e209344f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

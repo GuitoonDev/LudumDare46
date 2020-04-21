@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameContent/Gameplay/MeteoriteSpawner/MeteoriteSpawner.gdns" type="Script" id=1]
+
+[node name="MeteoriteSpawner" type="Node2D"]
+position = Vector2( 0, 1 )
+script = ExtResource( 1 )
+meteoriteInterval = 2.0
+instanceTimeActivation = PoolIntArray( 0, 5, 10, 15, 25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
